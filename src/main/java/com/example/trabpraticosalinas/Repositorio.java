@@ -10,44 +10,67 @@ public class Repositorio implements Serializable {
     private static Repositorio repo = null;
 
     private Map<String, Cliente> clientesMap = new HashMap<>();  // Mapa de <Número Fiscal, Cliente>
-    private Map<String, GestorProducao> gestoresProducaoMap = new HashMap<>();  // Mapa de <Username, GestorProducao>
-    private Map<String, GestorVendas> gestoresVendasMap = new HashMap<>();  // Mapa de <Username, GestorVendas>
+    private Map<String, gestorProducao> gestoresProducaoMap = new HashMap<>();  // Mapa de <Username, GestorProducao>
+    private Map<String, gestorVendas> gestoresVendasMap = new HashMap<>();  // Mapa de <Username, GestorVendas>
     private Map<String, Admin> adminsMap = new HashMap<>();  // Mapa de <Username, Admin>
 
     private Map<String, Tanque> tanquesMap = new HashMap<>();  // Mapa de <ID, Tanque>
-    private Map<String, LoteFabrico> lotesFabricoMap = new HashMap<>();  // Mapa de <ID, LoteFabrico>
-    private Map<String, ProdutoFinal> produtosFinaisMap = new HashMap<>();  // Mapa de <ID, ProdutoFinal>
+    private Map<String, loteFabrico> lotesFabricoMap = new HashMap<>();  // Mapa de <ID, LoteFabrico>
+    private Map<String, produtoFinal> produtosFinaisMap = new HashMap<>();  // Mapa de <ID, ProdutoFinal>
     private Map<String, Encomenda> encomendasMap = new HashMap<>();  // Mapa de <ID, Encomenda>
     private Map<String, Marnoto> marnotosMap = new HashMap<>();  // Mapa de <ID, Marnoto>
 
+    private transient ReentrantLock lock = new ReentrantLock();
 
+    public Repositorio (){}
 
-    public Repositorio (){};
+    public void lock() {
+        lock.lock();
+    }
 
-    public Map<String, Customer> getCustomers() {
-        return customersMap;
+    public void unlock() {
+        lock.unlock();
     }
-    public Map<String, CompanyOwner> getCompanyOwners() {
-        return companyOwnersMap;
+
+    public static Repositorio getRepo() {
+        return repo;
     }
-    public Map<CompanyOwner, List<Company>> getCompanyFromCompanyOwner() {
-        return companiesMap;
+
+    public Map<String, Cliente> getClientesMap() {
+        return clientesMap;
     }
-    public Map<String, Company> getCompany() {
-        return companiesMapNIF;
+
+    public Map<String, gestorProducao> getGestoresProducaoMap() {
+        return gestoresProducaoMap;
     }
-    public Map<String, Company> getCompaniesLocation(){
-        return companiesLocation;
+
+    public Map<String, gestorVendas> getGestoresVendasMap() {
+        return gestoresVendasMap;
     }
-    public Map<String, Admin> getAdmins() {return adminsMap;}
-    public Map<String, Employee> getEmployees() {return employeesMap;}
-    public Map<String, Service> getServices() {return services;}
-    public Map<Clinic, List<Service>> getServicesClinicMap(){return servicesClinicMap;}
-    public Map<String, List<Appointment>> getAppointments(){return appointmentsMap;}
-    public Map<Company, List<Clinic>> getCompanieClinicsMap(){return CompanieClinicsMap;}
-    public Map<String, Clinic> getClinicsMap(){return clinicsMap;}
-    public Map<Clinic, List<Employee>> getEmployeesClinicMap(){return employeesClinicMap;}
-    public Map<String, List<Clinic>> getClinicsPerCompanyOwner(){return clinicsPerCompanyOner;}
+
+    public Map<String, Admin> getAdminsMap() {
+        return adminsMap;
+    }
+
+    public Map<String, Tanque> getTanquesMap() {
+        return tanquesMap;
+    }
+
+    public Map<String, loteFabrico> getLotesFabricoMap() {
+        return lotesFabricoMap;
+    }
+
+    public Map<String, produtoFinal> getProdutosFinaisMap() {
+        return produtosFinaisMap;
+    }
+
+    public Map<String, Encomenda> getEncomendasMap() {
+        return encomendasMap;
+    }
+
+    public Map<String, Marnoto> getMarnotosMap() {
+        return marnotosMap;
+    }
 
     public static Repositorio getRepositorio(){
 

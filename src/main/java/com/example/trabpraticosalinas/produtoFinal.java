@@ -4,7 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class produtoFinal implements Serializable {
+public class
+produtoFinal implements Serializable {
     public Date dataCricao;
     List<loteFabrico> lotes;
 
