@@ -8,48 +8,39 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
-   <left>
-      <AnchorPane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="667.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <AnchorPane prefHeight="500.0" prefWidth="677.0" style="-fx-background-color: #B0C1FF;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="102.0" layoutY="75.0" text="Salinas">
-               <font>
-                  <Font size="48.0" />
-               </font>
-            </Label>
-            <Label layoutX="75.0" layoutY="145.0" text="do vouga">
-               <font>
-                  <Font size="49.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-   </left>
-   <right>
-      <AnchorPane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #2E8B57;" BorderPane.alignment="CENTER">
-         <children>
-            <TextField fx:id="usernameField" layoutX="65.0" layoutY="184.0" prefHeight="30.0" prefWidth="220.0" promptText="Username" />
-            <PasswordField fx:id="passwordField" layoutX="67.0" layoutY="235.0" prefHeight="30.0" prefWidth="220.0" promptText="Password" />
-            <Button fx:id="loginButton" layoutX="68.0" layoutY="322.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="219.0" text="Login">
+            <TextField fx:id="usernameField" layoutX="209.0" layoutY="175.0" prefHeight="38.0" prefWidth="220.0" promptText="Username" />
+            <PasswordField fx:id="passwordField" layoutX="209.0" layoutY="221.0" prefHeight="39.0" prefWidth="220.0" promptText="Password" />
+            <Button fx:id="loginButton" layoutX="210.0" layoutY="272.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="219.0" text="Login">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Label layoutX="108.0" layoutY="78.0" prefHeight="44.0" prefWidth="135.0" text="Bem-vindo">
+            <Label layoutX="237.0" layoutY="109.0" prefHeight="44.0" prefWidth="165.0" text="Iniciar Sessão" textFill="WHITE">
                <font>
                   <Font size="27.0" />
                </font>
             </Label>
-            <Button fx:id="newAccount" layoutX="324.0" layoutY="2.0" mnemonicParsing="false" text="X" />
-            <Button fx:id="registerButton" layoutX="68.0" layoutY="363.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="222.0" text="Criar Conta">
+            <Button fx:id="newAccount" layoutX="629.0" layoutY="14.0" mnemonicParsing="false" text="X" />
+            <Button fx:id="registerButton" layoutX="208.0" layoutY="355.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="222.0" text="Criar Conta">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
+            <Label layoutX="157.0" layoutY="39.0" text="Salinas do Vouga" textFill="WHITE">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+            <Label layoutX="210.0" layoutY="336.0" text="Não tens conta?" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
-   </right>
-   <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>
