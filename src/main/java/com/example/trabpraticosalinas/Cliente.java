@@ -11,6 +11,10 @@ public class Cliente extends Utilizador {
         this.encomendas = encomendas;
     }
 
+    public Cliente() {
+        super();
+    }
+
     public List<Encomenda> getEncomendas() {
         return encomendas;
     }

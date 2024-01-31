@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.trabpraticosalinas.registarController">
    <center>
         <AnchorPane prefHeight="500.0" prefWidth="705.0" style="-fx-background-color: #B0C1FF;" BorderPane.alignment="CENTER">
          <children>
@@ -47,7 +47,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="emailField" layoutX="22.0" layoutY="304.0" prefHeight="30.0" prefWidth="156.0" />
+            <TextField fx:id="NIFField" layoutX="22.0" layoutY="304.0" prefHeight="30.0" prefWidth="156.0" />
             <Label layoutX="202.0" layoutY="279.0" text="Nº CC">
                <font>
                   <Font size="15.0" />
@@ -70,9 +70,9 @@
                </font>
             </Label>
             <ChoiceBox fx:id="UserTypeChoiceBox" layoutX="403.0" layoutY="90.0" prefHeight="30.0" prefWidth="176.0" />
-            <TextField fx:id="NIFField" layoutX="390.0" layoutY="304.0" prefHeight="30.0" prefWidth="156.0" />
-            <TextField fx:id="phoneNumberField" layoutX="202.0" layoutY="304.0" prefHeight="30.0" prefWidth="155.0" />
-            <TextField fx:id="fullNameField1" layoutX="390.0" layoutY="230.0" prefHeight="30.0" prefWidth="220.0" />
+            <TextField fx:id="teleField" layoutX="390.0" layoutY="304.0" prefHeight="30.0" prefWidth="156.0" />
+            <TextField fx:id="CCfield" layoutX="202.0" layoutY="304.0" prefHeight="30.0" prefWidth="155.0" />
+            <TextField fx:id="localidadeField" layoutX="390.0" layoutY="230.0" prefHeight="30.0" prefWidth="220.0" />
             <Label layoutX="390.0" layoutY="209.0" text="Localidade ">
                <font>
                   <Font size="15.0" />

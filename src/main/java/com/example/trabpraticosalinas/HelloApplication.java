@@ -12,7 +12,7 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(HelloApplication.class.getResource("login.fxml"));
-        Scene scene = new Scene(root, 650, 500);
+        Scene scene = new Scene(root, 655, 500);
 
         stage.setTitle("Login");
         stage.setScene(scene);
@@ -20,6 +20,24 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
+        Repositorio repo;
+        Repositorio.deserialize("info.repo");
+        repo = Repositorio.getRepositorio();
+
+        if (repo.getAdminsMap().isEmpty()) {
+            Admin a1 = new Admin(
+                    "Administrador",
+                    "tiago",
+                    "paulo",
+                    "123456789",
+                    "123456789",
+                    "123456789",
+                    "Rua1",
+                    "ptl"
+            );
+
+            AdminBll.registarAdmin(a1);
+        }
         launch();
     }
 }

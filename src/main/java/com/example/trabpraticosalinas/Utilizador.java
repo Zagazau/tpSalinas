@@ -22,6 +22,9 @@ public class Utilizador implements Serializable {
         this.morada = morada;
         this.localidade = localidade;
     }
+    public Utilizador() {
+
+    }
 
     public String getNome() {
         return nome;
