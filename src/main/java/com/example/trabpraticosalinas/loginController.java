@@ -9,10 +9,10 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import javax.security.auth.login.LoginException;
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.List;
+import javafx.event.ActionEvent;
 
 public class loginController {
 
@@ -63,8 +63,7 @@ public class loginController {
     @FXML
     public void register(ActionEvent event) {
        try {
-            Parent root;
-            root = FXMLLoader.load(getClass().getResource("src/main/resources/com/example/trabpraticosalinas/registar.fxml"));
+           Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/registar.fxml"));
             Scene regCena = new Scene(root);
            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
            stage.setScene(regCena);

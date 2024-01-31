@@ -56,6 +56,11 @@ public class registarController {
     }
 
     @FXML
+    public void initialize() {
+        UserTypeChoiceBox.setItems(UserTypeList);
+    }
+
+    @FXML
     public boolean register2(ActionEvent event) {
         if (checkNome(event) && checkLocalidade(event) && checkMorada(event) && checkTele(event) && checkCC(event) && checkNIF(event) && checkUsername(event) && checkPassword(event) && checkTipoUtilizador(event)) {
             if (UserTypeChoiceBox.getValue().equals("Cliente")) {
@@ -102,6 +107,7 @@ public class registarController {
 
                 gestorProducaoBll gp = new gestorProducaoBll(repositorio);
                 gp.criarNovoGestorProducao(gp1.getNome(), gp1.getUsername(), gp1.getPassword(), gp1.getNumCC(), gp1.getNIF(), gp1.getTelefone(), gp1.getMorada(), gp1.getLocalidade());
+                }
 
                 try {
                     Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
@@ -114,7 +120,8 @@ public class registarController {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            } else if (!checkUsername(event)) {
+
+                if (!checkUsername(event)) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erro");
                 alert.setHeaderText("Username errado!");
@@ -146,7 +153,7 @@ public class registarController {
                 return false;
             }
         }
-        return true; // Retornar true se todas as verificações passarem
+        return true;
     }
 
     @FXML
@@ -253,7 +260,7 @@ public class registarController {
 
     @FXML
     public boolean checkTipoUtilizador(ActionEvent actionEvent) {
-        if (UserTypeChoiceBox.getValue() == null || UserTypeChoiceBox.getValue().toString().isEmpty()) {
+        if (UserTypeChoiceBox.getValue() == null || UserTypeChoiceBox.getValue().isEmpty()) {
             UserTypeChoiceBox.setStyle("-fx-border-color: red");
             return false;
         } else {
