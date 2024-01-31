@@ -22,7 +22,7 @@ public class VendaBll {
                 repositorio.getVendasMap().put(idEncomenda, novaVenda);
 
                 System.out.println("Venda realizada com sucesso!");
-                repositorio.serialize("userdata.repo");
+                repositorio.serialize("info.repo");
             } else {
                 System.out.println("Erro: Gestor de Vendas, Cliente ou Encomenda não encontrados.");
             }
