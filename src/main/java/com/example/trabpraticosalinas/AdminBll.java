@@ -14,8 +14,18 @@ public class AdminBll {
         repositorio.lock();
 
         try {
-            Map<String, Admin> adminsMap = repositorio.getAdminsMap();
-            adminsMap.put(username, novoAdmin);
+            repositorio.getAdminsMap().put(username, novoAdmin);
+            repositorio.serialize("info.repo");
+        } finally {
+            repositorio.unlock();
+        }
+    }
+
+    public Admin obterAdminPorUsername(String username) {
+        repositorio.lock();
+
+        try {
+            return repositorio.getAdminsMap().get(username);
         } finally {
             repositorio.unlock();
         }

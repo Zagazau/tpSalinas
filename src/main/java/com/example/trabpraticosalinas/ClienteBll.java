@@ -1,5 +1,6 @@
 package com.example.trabpraticosalinas;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClienteBll {
@@ -9,30 +10,26 @@ public class ClienteBll {
         this.repositorio = repositorio;
     }
 
-    public void registarNovoCliente(String nome, String username, String password, String numCC, String NIF, String telefone, String morada, String localidade) {
-        Cliente novoCliente = new Cliente(nome, username, password, numCC, NIF, telefone, morada, localidade, null); // Inicialmente sem encomendas
+    public void criarNovoCliente(String nome, String username, String password, String numCC, String NIF, String telefone, String morada, String localidade) {
+        Cliente novoCliente = new Cliente(nome, username, password, numCC, NIF, telefone, morada, localidade, new ArrayList<>());
         repositorio.lock();
 
         try {
             repositorio.getClientesMap().put(NIF, novoCliente);
+            repositorio.serialize("info.repo");
         } finally {
             repositorio.unlock();
         }
     }
 
-    public List<Encomenda> consultarEncomendas(String NIF) {
+    public List<Cliente> listarClientes() {
         repositorio.lock();
 
         try {
-            Cliente cliente = repositorio.getClientesMap().get(NIF);
-            if (cliente != null) {
-                return cliente.getEncomendas();
-            }
+            return new ArrayList<>(repositorio.getClientesMap().values());
         } finally {
             repositorio.unlock();
         }
-
-        return null; // Cliente não encontrado ou sem encomendas
     }
 }
 
