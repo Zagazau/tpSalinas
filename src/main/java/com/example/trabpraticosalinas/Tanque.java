@@ -1,16 +1,23 @@
 package com.example.trabpraticosalinas;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 public class Tanque implements Serializable {
-    public tipoTanque tipo;
-    public double capacidade;
-    public double quantidadeAguaSalgada;
+    private UUID idTanque;
+    private tipoTanque tipo;
+    private double capacidade;
+    private double quantidadeAguaSalgada;
 
     public Tanque(tipoTanque tipo, double capacidade, double quantidadeAguaSalgada) {
+        this.idTanque = UUID.randomUUID();
         this.tipo = tipo;
         this.capacidade = capacidade;
         this.quantidadeAguaSalgada = quantidadeAguaSalgada;
+    }
+
+    public UUID getId() {
+        return idTanque;
     }
 
     public tipoTanque getTipo() {

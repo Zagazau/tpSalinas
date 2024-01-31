@@ -14,29 +14,25 @@ public class EncomendaBll {
         repositorio.lock();
 
         try {
-            repositorio.getEncomendasMap().put(gerarIdEncomenda(), novaEncomenda);
+            repositorio.getEncomendasMap().put(cliente.getUsername() + "_" + System.currentTimeMillis(), novaEncomenda);
+            repositorio.serialize("info.repo");
         } finally {
             repositorio.unlock();
         }
     }
 
-    public List<Encomenda> consultarEncomendasCliente(String NIFCliente) {
+    public Encomenda obterEncomendaPorCliente(Cliente cliente) {
         repositorio.lock();
 
         try {
-            Cliente cliente = repositorio.getClientesMap().get(NIFCliente);
-            if (cliente != null) {
-                return cliente.getEncomendas();
+            for (Encomenda encomenda : repositorio.getEncomendasMap().values()) {
+                if (encomenda.getCliente().equals(cliente)) {
+                    return encomenda;
+                }
             }
+            return null;
         } finally {
             repositorio.unlock();
         }
-
-        return null; // Cliente não encontrado ou sem encomendas
-    }
-
-    private String gerarIdEncomenda() {
-        return "ENC" + (repositorio.getEncomendasMap().size() + 1);
     }
 }
-

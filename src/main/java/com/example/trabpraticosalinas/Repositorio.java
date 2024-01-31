@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class Repositorio implements Serializable {
@@ -15,14 +16,15 @@ public class Repositorio implements Serializable {
     private Map<String, Admin> adminsMap = new HashMap<>();  // Mapa de <Username, Admin>
     private Map<gestorVendas, List<Encomenda>> gestorEncomendas = new HashMap<>();
     private Map<gestorProducao, List<Tanque>> gestorTanques = new HashMap<>();
-    private Map<String, Tanque> tanquesMap = new HashMap<>();  // Mapa de <ID, Tanque>
+    private Map<UUID, Tanque> tanquesMap = new HashMap<>();  // Mapa de <ID, Tanque>
     private Map<String, loteFabrico> lotesFabricoMap = new HashMap<>();  // Mapa de <ID, LoteFabrico>
-    private Map<String, produtoFinal> produtosFinaisMap = new HashMap<>();  // Mapa de <ID, ProdutoFinal>
+    private Map<UUID, produtoFinal> produtosFinaisMap = new HashMap<>();  // Mapa de <ID, ProdutoFinal>
     private Map<String, Encomenda> encomendasMap = new HashMap<>();  // Mapa de <ID, Encomenda>
     private Map<String, Marnoto> marnotosMap = new HashMap<>();  // Mapa de <ID, Marnoto>
     private Map<Marnoto, List<Tanque>> marnotoTanque = new HashMap<>();  // Mapa de <ID, Marnoto>
     private Map<Tanque, List<Marnoto>> tanqueMarnoto = new HashMap<>();
     private Map<produtoFinal, List<loteFabrico>> produtoLotesFabrico = new HashMap<>();
+    private Map<String, Venda> vendasMap = new HashMap<>();  // Mapa de <ID, Venda>
 
     private transient ReentrantLock lock = new ReentrantLock();
 
@@ -56,7 +58,7 @@ public class Repositorio implements Serializable {
         return adminsMap;
     }
 
-    public Map<String, Tanque> getTanquesMap() {
+    public Map<UUID, Tanque> getTanquesMap() {
         return tanquesMap;
     }
 
@@ -64,7 +66,7 @@ public class Repositorio implements Serializable {
         return lotesFabricoMap;
     }
 
-    public Map<String, produtoFinal> getProdutosFinaisMap() {
+    public Map<UUID, produtoFinal> getProdutosFinaisMap() {
         return produtosFinaisMap;
     }
 
@@ -82,6 +84,9 @@ public class Repositorio implements Serializable {
 
     public Map<gestorProducao, List<Tanque>> getGestorTanques() {
         return gestorTanques;
+    }
+    public Map<String, Venda> getVendasMap() {
+        return vendasMap;
     }
 
     public static Repositorio getRepositorio(){
