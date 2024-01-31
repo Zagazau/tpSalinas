@@ -13,12 +13,16 @@ public class Repositorio implements Serializable {
     private Map<String, gestorProducao> gestoresProducaoMap = new HashMap<>();  // Mapa de <Username, GestorProducao>
     private Map<String, gestorVendas> gestoresVendasMap = new HashMap<>();  // Mapa de <Username, GestorVendas>
     private Map<String, Admin> adminsMap = new HashMap<>();  // Mapa de <Username, Admin>
-
+    private Map<gestorVendas, List<Encomenda>> gestorEncomendas = new HashMap<>();
+    private Map<gestorProducao, List<Tanque>> gestorTanques = new HashMap<>();
     private Map<String, Tanque> tanquesMap = new HashMap<>();  // Mapa de <ID, Tanque>
     private Map<String, loteFabrico> lotesFabricoMap = new HashMap<>();  // Mapa de <ID, LoteFabrico>
     private Map<String, produtoFinal> produtosFinaisMap = new HashMap<>();  // Mapa de <ID, ProdutoFinal>
     private Map<String, Encomenda> encomendasMap = new HashMap<>();  // Mapa de <ID, Encomenda>
     private Map<String, Marnoto> marnotosMap = new HashMap<>();  // Mapa de <ID, Marnoto>
+    private Map<Marnoto, List<Tanque>> marnotoTanque = new HashMap<>();  // Mapa de <ID, Marnoto>
+    private Map<Tanque, List<Marnoto>> tanqueMarnoto = new HashMap<>();
+    private Map<produtoFinal, List<loteFabrico>> produtoLotesFabrico = new HashMap<>();
 
     private transient ReentrantLock lock = new ReentrantLock();
 
@@ -70,6 +74,14 @@ public class Repositorio implements Serializable {
 
     public Map<String, Marnoto> getMarnotosMap() {
         return marnotosMap;
+    }
+
+    public Map<gestorVendas, List<Encomenda>> getGestorEncomendas() {
+        return gestorEncomendas;
+    }
+
+    public Map<gestorProducao, List<Tanque>> getGestorTanques() {
+        return gestorTanques;
     }
 
     public static Repositorio getRepositorio(){
