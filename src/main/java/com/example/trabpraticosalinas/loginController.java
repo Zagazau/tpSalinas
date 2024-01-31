@@ -61,20 +61,19 @@ public class loginController {
     }
 
     @FXML
-    void register(ActionEvent event) {
-      /* try {
+    public void register(ActionEvent event) {
+       try {
             Parent root;
-            root = FXMLLoader.load(getClass().getResource("com/example/trabpraticosalinas/registar.fxml"));
+            root = FXMLLoader.load(getClass().getResource("src/main/resources/com/example/trabpraticosalinas/registar.fxml"));
             Scene regCena = new Scene(root);
-            Stage stage = (Stage) ((Node) ActionEvent.getSource()).getScene().getWindow();
-            stage.setScene(regCena);
+           Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+           stage.setScene(regCena);
             stage.setTitle("Registar");
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-       */
     }
+
 
 }

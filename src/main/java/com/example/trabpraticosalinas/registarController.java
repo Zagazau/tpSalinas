@@ -8,14 +8,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import java.net.URL;
-import java.util.ResourceBundle;
-
+import javafx.event.ActionEvent;
 
 public class registarController {
 
@@ -29,7 +24,7 @@ public class registarController {
     private TextField NIFField;
 
     @FXML
-    private ChoiceBox<?> UserTypeChoiceBox;
+    private ChoiceBox<String> UserTypeChoiceBox;
 
     @FXML
     private TextField addressField;
@@ -56,14 +51,13 @@ public class registarController {
     private TextField usernameField;
 
     @FXML
-    void goBack(ActionEvent event) {
+    public void goBack(ActionEvent event) {
 
     }
 
-
     @FXML
-    void register2(javafx.event.ActionEvent event) {
-        if (checkNome(event) && checkLocalidade(event) && checkAddress(event) && && checktele(event) && checkCC(event) && checkNIF(event) &&  checkUsername(event) && checkPassword(event) && checkUserType(event)) {
+    public boolean register2(ActionEvent event) {
+        if (checkNome(event) && checkLocalidade(event) && checkMorada(event) && checkTele(event) && checkCC(event) && checkNIF(event) && checkUsername(event) && checkPassword(event) && checkTipoUtilizador(event)) {
             if (UserTypeChoiceBox.getValue().equals("Cliente")) {
                 Utilizador u1 = new Cliente();
                 u1.setLocalidade(localidadeField.getText());
@@ -74,7 +68,6 @@ public class registarController {
                 u1.setTelefone(teleField.getText());
                 u1.setUsername(usernameField.getText());
                 u1.setPassword(passwordField.getText());
-
 
                 Repositorio repositorio = new Repositorio();
                 ClienteBll c = new ClienteBll(repositorio);
@@ -96,7 +89,7 @@ public class registarController {
                 gv.criarNovoGestorVendas(gv1.getNome(), gv1.getUsername(), gv1.getPassword(), gv1.getNumCC(), gv1.getNIF(), gv1.getTelefone(), gv1.getMorada(), gv1.getLocalidade());
 
             } else if (UserTypeChoiceBox.getValue().equals("GestorProdução")) {
-                Utilizador gp1 = new gestorVendas();
+                Utilizador gp1 = new gestorProducao();
                 gp1.setLocalidade(localidadeField.getText());
                 gp1.setMorada(addressField.getText());
                 gp1.setNome(fullNameField.getText());
@@ -110,7 +103,6 @@ public class registarController {
                 gestorProducaoBll gp = new gestorProducaoBll(repositorio);
                 gp.criarNovoGestorProducao(gp1.getNome(), gp1.getUsername(), gp1.getPassword(), gp1.getNumCC(), gp1.getNIF(), gp1.getTelefone(), gp1.getMorada(), gp1.getLocalidade());
 
-
                 try {
                     Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
                     Scene regCena = new Scene(root);
@@ -122,131 +114,151 @@ public class registarController {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
-
-            } else if (checkUsername(event) == false) {
+            } else if (!checkUsername(event)) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erro");
                 alert.setHeaderText("Username errado!");
                 alert.show();
-                return;
-            } else if (checkPassword(event) == false) {
+                return false;
+            } else if (!checkPassword(event)) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erro");
                 alert.setHeaderText("Por favor, insira uma password!");
                 alert.show();
-                return;
-            } else if (checkUserType(event) == false) {
+                return false;
+            } else if (!checkTipoUtilizador(event)) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erro");
                 alert.setHeaderText("Por favor, insira um tipo de utilizador!");
                 alert.show();
-                return;
-            } else if (checkNIF(event) == false) {
+                return false;
+            } else if (!checkNIF(event)) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erro");
                 alert.setHeaderText("NIF errado. Por favor, insira novamente!");
                 alert.show();
-                return;
-            } else if (checkPhoneNumber(event) == false) {
+                return false;
+            } else if (!checkTele(event)) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erro");
                 alert.setHeaderText("Numero de telemovel errado. Por favor, insira novamente!");
                 alert.show();
-                return;
-
-            }
-
-        }
-
-        public boolean checkUserType (javafx.event.ActionEvent actionEvent){
-            if (UserTypeChoiceBox.getValue().isEmpty()) {
-                UserTypeChoiceBox.setStyle("-fx-border-color: red");
-                return false;
-            } else {
-                UserTypeChoiceBox.setStyle("-fx-border-color: green");
-                return true;
-            }
-        }
-
-        @FXML
-        public boolean checkUsername (javafx.event.ActionEvent actionEvent){
-            Repositorio repo = Repositorio.getRepositorio();
-            repo.deserialize("info.repo");
-
-            String enteredUsername = usernameField.getText().trim();
-
-            if (enteredUsername.isEmpty()) {
-                usernameField.setStyle("-fx-border-color: red");
                 return false;
             }
+        }
+        return true; // Retornar true se todas as verificações passarem
+    }
 
-            for (Cliente c : repo.getClientesMap().values()) {
-                if (enteredUsername.equals(c.getUsername())) {
-                    usernameField.setStyle("-fx-border-color: red");
-                    return false;
-                }
-            }
+    @FXML
+    public boolean checkNome(ActionEvent actionEvent) {
+        String enteredNome = fullNameField.getText().trim();
 
-            for (CompanyOwner companyOwner : repo.getCompanyOwners().values()) {
-                if (enteredUsername.equals(companyOwner.getUsername())) {
-                    usernameField.setStyle("-fx-border-color: red");
-                    return false;
-                }
-            }
+        if (enteredNome.isEmpty()) {
+            fullNameField.setStyle("-fx-border-color: red");
+            return false;
+        } else {
+            fullNameField.setStyle("-fx-border-color: green");
+            return true;
+        }
+    }
 
-            for (Admin admin : repo.getAdmins().values()) {
-                if (enteredUsername.equals(admin.getUsername())) {
-                    usernameField.setStyle("-fx-border-color: red");
-                    return false;
-                }
-            }
+    @FXML
+    public boolean checkLocalidade(ActionEvent actionEvent) {
+        String enteredLocalidade = localidadeField.getText().trim();
 
-            for (Employee employee : repo.getEmployees().values()) {
-                if (enteredUsername.equals(employee.getUsername())) {
-                    usernameField.setStyle("-fx-border-color: red");
-                    return false;
-                }
-            }
+        if (enteredLocalidade.isEmpty()) {
+            localidadeField.setStyle("-fx-border-color: red");
+            return false;
+        } else {
+            localidadeField.setStyle("-fx-border-color: green");
+            return true;
+        }
+    }
 
+    @FXML
+    public boolean checkMorada(ActionEvent actionEvent) {
+        String enteredMorada = addressField.getText().trim();
+
+        if (enteredMorada.isEmpty()) {
+            addressField.setStyle("-fx-border-color: red");
+            return false;
+        } else {
+            addressField.setStyle("-fx-border-color: green");
+            return true;
+        }
+    }
+
+    @FXML
+    public boolean checkTele(ActionEvent actionEvent) {
+        String enteredTelefone = teleField.getText().trim();
+
+        if (enteredTelefone.isEmpty()) {
+            teleField.setStyle("-fx-border-color: red");
+            return false;
+        } else {
+            teleField.setStyle("-fx-border-color: green");
+            return true;
+        }
+    }
+
+    @FXML
+    public boolean checkCC(ActionEvent actionEvent) {
+        String enteredCC = CCfield.getText().trim();
+
+        if (enteredCC.isEmpty()) {
+            CCfield.setStyle("-fx-border-color: red");
+            return false;
+        } else {
+            CCfield.setStyle("-fx-border-color: green");
+            return true;
+        }
+    }
+
+    @FXML
+    public boolean checkNIF(ActionEvent actionEvent) {
+        String enteredNIF = NIFField.getText().trim();
+
+        if (enteredNIF.length() == 9) {
+            NIFField.setStyle("-fx-border-color: green");
+            return true;
+        } else {
+            NIFField.setStyle("-fx-border-color: red");
+            return false;
+        }
+    }
+
+    @FXML
+    public boolean checkUsername(ActionEvent actionEvent) {
+        String enteredUsername = usernameField.getText().trim();
+
+        if (enteredUsername.isEmpty()) {
+            usernameField.setStyle("-fx-border-color: red");
+            return false;
+        } else {
             usernameField.setStyle("-fx-border-color: green");
             return true;
         }
-
-        @FXML
-        public boolean checkPassword (javafx.event.ActionEvent actionEvent){
-            if (passwordField.getText().isEmpty()) {
-                passwordField.setStyle("-fx-border-color: red");
-                return false;
-
-            } else {
-                passwordField.setStyle("-fx-border-color: green");
-                return true;
-            }
-        }
-
-        @FXML
-        public boolean checkNIF (javafx.event.ActionEvent actionEvent){
-            if (NIFField.getText().length() == 9) {
-                NIFField.setStyle("-fx-border-color: green");
-                return true;
-            } else {
-                NIFField.setStyle("-fx-border-color: red");
-                return false;
-            }
-        }
-
-        public boolean checkPhoneNumber (javafx.event.ActionEvent actionEvent){
-            if (phoneNumberField.getText().length() == 9) {
-                phoneNumberField.setStyle("-fx-border-color: green");
-                return true;
-            } else {
-                phoneNumberField.setStyle("-fx-border-color: red");
-                return false;
-            }
-        }
-
     }
 
-}
+    @FXML
+    public boolean checkPassword(ActionEvent actionEvent) {
+        if (passwordField.getText().isEmpty()) {
+            passwordField.setStyle("-fx-border-color: red");
+            return false;
+        } else {
+            passwordField.setStyle("-fx-border-color: green");
+            return true;
+        }
+    }
 
+    @FXML
+    public boolean checkTipoUtilizador(ActionEvent actionEvent) {
+        if (UserTypeChoiceBox.getValue() == null || UserTypeChoiceBox.getValue().toString().isEmpty()) {
+            UserTypeChoiceBox.setStyle("-fx-border-color: red");
+            return false;
+        } else {
+            UserTypeChoiceBox.setStyle("-fx-border-color: green");
+            return true;
+        }
+    }
+}
