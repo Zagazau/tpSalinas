@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PayAppointmentsController">
+   <top>
+        <AnchorPane prefHeight="500.0" prefWidth="705.0" style="-fx-background-color: #B0C1FF;" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="235.0" layoutY="30.0" prefHeight="39.0" prefWidth="231.0" text="Pagar Encomenda" textFill="WHITE">
+                    <font>
+                        <Font size="27.0" />
+                    </font>
+                </Label>
+                <Button fx:id="backButton" layoutX="191.0" layoutY="430.0" mnemonicParsing="false" onAction="#goBack" prefHeight="31.0" prefWidth="308.0" text="Voltar" />
+                <TableView fx:id="appointmentsTable" layoutX="29.0" layoutY="100.0" prefHeight="264.0" prefWidth="634.0">
+                    <columns>
+                        <TableColumn fx:id="AppointmentIdColumn" prefWidth="120.0" text="Id_Encomenda" />
+                        <TableColumn fx:id="DateColumn" prefWidth="127.0" text="Data" />
+                        <TableColumn fx:id="AppointmentStateColumn" prefWidth="153.0" text="Estado da Encomenda" />
+                        <TableColumn fx:id="TotalValueColumn" prefWidth="233.0" text="Valor" />
+                    </columns>
+                </TableView>
+                <Button fx:id="payButton" layoutX="192.0" layoutY="380.0" mnemonicParsing="false" onAction="#payAppointment" prefHeight="44.0" prefWidth="309.0" text="Pagar" />
+            </children>
+        </AnchorPane>
+   </top>
+</BorderPane>
