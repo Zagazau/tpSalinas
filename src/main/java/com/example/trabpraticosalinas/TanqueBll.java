@@ -10,8 +10,8 @@ public class TanqueBll {
         this.repositorio = repositorio;
     }
 
-    public void criarNovoTanque(tipoTanque tipo, double capacidade, double quantidadeAguaSalgada) {
-        Tanque novoTanque = new Tanque(tipo, capacidade, quantidadeAguaSalgada);
+    public void criarNovoTanque(/*tipoTanque tipo*/ double capacidade, double quantidadeAguaSalgada) {
+        Tanque novoTanque = new Tanque(/*tipo*/capacidade, quantidadeAguaSalgada);
         repositorio.lock();
 
         try {

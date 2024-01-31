@@ -11,9 +11,9 @@ public class loteFabricoBll {
         this.repositorio = repositorio;
     }
 
-    public void criarNovoLoteFabrico(String tipo, double peso, tipoTanque crist, Date diaTrabalho, List<Marnoto> marnotos) {
+    public void criarNovoLoteFabrico(String tipo, double peso, /*tipoTanque crist,*/ Date diaTrabalho, List<Marnoto> marnotos) {
         UUID idLoteFabrico = UUID.randomUUID(); // Gerar um ID único para o loteFabrico
-        loteFabrico novoLoteFabrico = new loteFabrico(idLoteFabrico, tipo, peso, crist, diaTrabalho, marnotos);
+        loteFabrico novoLoteFabrico = new loteFabrico(idLoteFabrico, tipo, peso, /*crist,*/ diaTrabalho, marnotos);
         repositorio.lock();
 
         try {

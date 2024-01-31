@@ -9,15 +9,15 @@ public class loteFabrico implements Serializable {
     private UUID idLoteFabrico;
     public String tipo;
     public double peso;
-    public tipoTanque crist;
+   // public tipoTanque crist;
     public Date diaTrabalho;
     List<Marnoto> marnotos;
 
-    public loteFabrico(UUID idLoteFabrico, String tipo, double peso, tipoTanque crist, Date diaTrabalho, List<Marnoto> marnotos) {
+    public loteFabrico(UUID idLoteFabrico, String tipo, double peso, /*tipoTanque cris*/ Date diaTrabalho, List<Marnoto> marnotos) {
         this.idLoteFabrico = idLoteFabrico;
         this.tipo = tipo;
         this.peso = peso;
-        this.crist = crist;
+      //  this.crist = crist;
         this.diaTrabalho = diaTrabalho;
         this.marnotos = marnotos;
     }
@@ -25,14 +25,14 @@ public class loteFabrico implements Serializable {
     public UUID getIdLoteFabrico() {
         return idLoteFabrico;
     }
-    public String getTipo() {
+  /*  public String getTipo() {
         return tipo;
     }
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-
+    */
     public double getPeso() {
         return peso;
     }
@@ -41,14 +41,14 @@ public class loteFabrico implements Serializable {
         this.peso = peso;
     }
 
-    public tipoTanque getCrist() {
+   /* public tipoTanque getCrist() {
         return crist;
     }
 
     public void setCrist(tipoTanque crist) {
         this.crist = crist;
     }
-
+    */
     public Date getDiaTrabalho() {
         return diaTrabalho;
     }

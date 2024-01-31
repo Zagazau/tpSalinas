@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-public class pagarEncomendaController {
+public class listarEncomendasController {
 
     @FXML
     private TableColumn<?, ?> AppointmentIdColumn;
@@ -27,16 +27,9 @@ public class pagarEncomendaController {
     private Button backButton;
 
     @FXML
-    private Button payButton;
-
-    @FXML
     void goBack(ActionEvent event) {
 
     }
 
-    @FXML
-    void pagarEncomenda(ActionEvent event) {
-
-    }
-
 }
+
