@@ -13,8 +13,7 @@ public class gestorVendasBll {
 
         try {
             repositorio.getGestoresVendasMap().put(username, novoGestorVendas);
-            repositorio.serialize("info.repo");
-        } finally {
+            Repositorio.serialize(repositorio, "info.repo");        } finally {
             repositorio.unlock();
         }
     }

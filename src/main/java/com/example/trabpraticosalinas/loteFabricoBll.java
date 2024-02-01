@@ -19,8 +19,7 @@ public class loteFabricoBll {
         try {
             repositorio.getLotesFabricoMap().put(idLoteFabrico.toString(), novoLoteFabrico);
             System.out.println("Lote de Fabrico adicionado com sucesso!");
-            repositorio.serialize("info.repo");
-        } finally {
+            Repositorio.serialize(repositorio, "info.repo");        } finally {
             repositorio.unlock();
         }
     }

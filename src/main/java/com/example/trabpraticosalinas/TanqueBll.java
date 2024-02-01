@@ -19,7 +19,7 @@ public class TanqueBll {
             if (!repositorio.getTanquesMap().containsKey(idTanque)) {
                 repositorio.getTanquesMap().put(idTanque, novoTanque);
                 System.out.println("Tanque adicionado com sucesso!");
-                repositorio.serialize("info.repo");
+                Repositorio.serialize(repositorio, "info.repo");
             } else {
                 System.out.println("Erro: Tanque com o ID " + idTanque + " já existe no repositório.");
             }

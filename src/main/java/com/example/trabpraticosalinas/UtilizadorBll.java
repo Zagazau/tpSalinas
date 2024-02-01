@@ -31,8 +31,7 @@ public class UtilizadorBll {
                 }
 
                 System.out.println("Utilizador criado com sucesso!");
-                repositorio.serialize("info.repo");
-            } else {
+                Repositorio.serialize(repositorio, "info.repo");            } else {
                 System.out.println("Erro: O username " + username + " já está em uso.");
             }
         } finally {

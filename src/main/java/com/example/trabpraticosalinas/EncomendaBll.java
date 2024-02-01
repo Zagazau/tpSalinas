@@ -15,7 +15,7 @@ public class EncomendaBll {
 
         try {
             repositorio.getEncomendasMap().put(cliente.getUsername() + "_" + System.currentTimeMillis(), novaEncomenda);
-            repositorio.serialize("info.repo");
+            Repositorio.serialize(repositorio, "info.repo");
         } finally {
             repositorio.unlock();
         }

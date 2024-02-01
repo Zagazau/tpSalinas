@@ -95,7 +95,7 @@ public class gerirClientesAdminController {
 
                 repositorio.getClienteEncomendaMap().remove(c);
 
-                repositorio.serialize("info.repo");
+                Repositorio.serialize(repositorio, "info.repo");
                 customersTable.getItems().remove(c);
             }
         } else {

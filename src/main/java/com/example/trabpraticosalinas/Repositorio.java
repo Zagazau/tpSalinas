@@ -8,6 +8,7 @@ import java.util.UUID;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class Repositorio implements Serializable {
+    private static final long serialVersionUID = 1L;
     private static Repositorio repo = null;
 
     private Map<String, Cliente> clientesMap = new HashMap<>();  // Mapa de <Número Fiscal, Cliente>
@@ -104,38 +105,26 @@ public class Repositorio implements Serializable {
         if (repo == null)
             repo = new Repositorio();
         lock.unlock();
-
         return repo;
     }
 
-    public void serialize(String filename) {
-        // Serialize an object to file
-        try{
-            FileOutputStream fileOut = new FileOutputStream(filename);
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(this);
-            out.close();
-            fileOut.close();
+    public static void serialize(Repositorio repository, String filename) {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filename))) {
+            out.writeObject(repository);
             System.out.println("Serialized data is saved in " + filename);
-        }catch(IOException ex){
-            System.out.println("Error: " + ex.getMessage());
+        } catch (IOException ex) {
+            System.out.println("Error during serialization: " + ex.getMessage());
         }
     }
 
-    public static void deserialize(String filename) {
-        try{
-            FileInputStream fileIn = new FileInputStream(filename);
-            ObjectInputStream in = new ObjectInputStream(fileIn);
+    public static Repositorio deserialize(String filename) {
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename))) {
             repo = (Repositorio) in.readObject();
-            in.close();
-            fileIn.close();
             System.out.println("Serialized data is loaded from " + filename);
+        } catch (IOException | ClassNotFoundException ex) {
+            System.out.println("Error during deserialization: " + ex.getMessage());
         }
-        catch(IOException ex){
-            System.out.println("ErrorDeserialize: " + ex.getMessage());
-        } catch(ClassNotFoundException ex){
-            System.out.println("Repositorio class not found. " + ex.getMessage());
-        }
+        return repo;
     }
 
 }

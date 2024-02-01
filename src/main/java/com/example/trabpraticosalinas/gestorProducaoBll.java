@@ -16,8 +16,7 @@ public class gestorProducaoBll {
 
         try {
             repositorio.getGestoresProducaoMap().put(username, novoGestorProducao);
-            repositorio.serialize("info.repo");
-        } finally {
+            Repositorio.serialize(repositorio, "info.repo");        } finally {
             repositorio.unlock();
         }
     }

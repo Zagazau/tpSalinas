@@ -63,7 +63,7 @@ public class registarController {
     }
 
     @FXML
-    public <ClienteMenuController> void redirectToLogin(ActionEvent event) {
+    private void redirectToLogin(ActionEvent event, String fxmlPath, String title) {
         try {
             String userType = UserTypeChoiceBox.getValue();
 
@@ -74,18 +74,12 @@ public class registarController {
             stage.setScene(loginScene);
             stage.setTitle("Login");
 
-            // Se o tipo de usuário for "Cliente", redirecione para o clienteMenu.fxml
-            if ("Cliente".equals(userType)) {
-                FXMLLoader clienteMenuLoader = new FXMLLoader(getClass().getResource("clienteMenu.fxml"));
-                Parent clienteMenuRoot = clienteMenuLoader.load();
-                ClienteMenuController clienteMenuController = clienteMenuLoader.getController();
-
-                // Passe a informação do usuário, se necessário (por exemplo, o nome do cliente)
-                // clienteMenuController.setNomeDoCliente(nomeDoCliente);
-
-                Scene clienteMenuScene = new Scene(clienteMenuRoot);
-                stage.setScene(clienteMenuScene);
-                stage.setTitle("Cliente Menu");
+            if ("Cliente".equals(userType) || "gestorVendas".equals(userType) || "gestorProducao".equals(userType)) {
+                FXMLLoader menuLoader = new FXMLLoader(getClass().getResource(fxmlPath));
+                Parent menuRoot = menuLoader.load();
+                Scene menuScene = new Scene(menuRoot);
+                stage.setScene(menuScene);
+                stage.setTitle(title);
             }
 
             stage.show();
@@ -112,7 +106,7 @@ public class registarController {
                 ClienteBll c = new ClienteBll(repositorio);
                 c.criarNovoCliente(u1.getNome(), u1.getUsername(), u1.getPassword(), u1.getNumCC(), u1.getNIF(), u1.getTelefone(), u1.getMorada(), u1.getLocalidade());
 
-                redirectToLogin(event);
+                redirectToLogin(event, "login.fxml", "Login");
             } else if (UserTypeChoiceBox.getValue().equals("GestorVendas")) {
                 Utilizador gv1 = new gestorVendas();
                 gv1.setLocalidade(localidadeField.getText());
@@ -128,6 +122,7 @@ public class registarController {
                 gestorVendasBll gv = new gestorVendasBll(repositorio);
                 gv.criarNovoGestorVendas(gv1.getNome(), gv1.getUsername(), gv1.getPassword(), gv1.getNumCC(), gv1.getNIF(), gv1.getTelefone(), gv1.getMorada(), gv1.getLocalidade());
 
+                redirectToLogin(event, "login.fxml", "login");
             } else if (UserTypeChoiceBox.getValue().equals("GestorProdução")) {
                 Utilizador gp1 = new gestorProducao();
                 gp1.setLocalidade(localidadeField.getText());
@@ -142,10 +137,10 @@ public class registarController {
 
                 gestorProducaoBll gp = new gestorProducaoBll(repositorio);
                 gp.criarNovoGestorProducao(gp1.getNome(), gp1.getUsername(), gp1.getPassword(), gp1.getNumCC(), gp1.getNIF(), gp1.getTelefone(), gp1.getMorada(), gp1.getLocalidade());
+
+                redirectToLogin(event, "login.fxml", "Login");
             }
 
-            // Remove o bloco try-catch redundante que estava criando um novo FXMLLoader
-            // e uma nova Scene para o login.
             if (!checkUsername(event)) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erro");
@@ -179,6 +174,13 @@ public class registarController {
             }
         }
         return true;
+    }
+
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(content);
+        alert.show();
     }
 
     @FXML

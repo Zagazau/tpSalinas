@@ -16,7 +16,7 @@ public class ClienteBll {
 
         try {
             repositorio.getClientesMap().put(NIF, novoCliente);
-            repositorio.serialize("info.repo");
+            Repositorio.serialize(repositorio, "info.repo");
         } finally {
             repositorio.unlock();
         }

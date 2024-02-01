@@ -19,8 +19,7 @@ public class produtoFinalBll {
             if (!repositorio.getProdutosFinaisMap().containsKey(idProdutoFinal)) {
                 repositorio.getProdutosFinaisMap().put(idProdutoFinal, novoProdutoFinal);
                 System.out.println("Produto final adicionado com sucesso!");
-                repositorio.serialize("info.repo");
-            } else {
+                Repositorio.serialize(repositorio, "info.repo");            } else {
                 System.out.println("Erro: Produto final com o ID " + idProdutoFinal + " já existe no repositório.");
             }
         } finally {

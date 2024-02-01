@@ -7,6 +7,6 @@ public class AdminBll {
         Repositorio.getRepositorio().getAdminsMap().put(admin.getNIF(), admin);
 
         System.out.println("Admin criado com sucesso.");
-        Repositorio.getRepositorio().serialize("info.repo");
+        Repositorio.getRepositorio().serialize(Repositorio.getRepositorio(), "info.repo");
     }
 }

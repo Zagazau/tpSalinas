@@ -13,8 +13,7 @@ public class MarnotoBll {
 
         try {
             repositorio.getMarnotosMap().put(username, novoMarnoto);
-            repositorio.serialize("info.repo");
-        } finally {
+            Repositorio.serialize(repositorio, "info.repo");        } finally {
             repositorio.unlock();
         }
     }
