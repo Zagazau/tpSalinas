@@ -17,6 +17,10 @@ produtoFinal implements Serializable {
         this.lotes = lotes;
     }
 
+    public produtoFinal() {
+
+    }
+
     public UUID getIdProdutoFinal() {
         return idProdutoFinal;
     }

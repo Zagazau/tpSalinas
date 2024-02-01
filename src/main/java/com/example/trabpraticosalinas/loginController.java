@@ -69,6 +69,33 @@ public class loginController {
                 }
             }
 
+            for (gestorProducao gp : repo.getGestoresProducaoMap().values()) {
+                if (user.equalsIgnoreCase(gp.getUsername()) && password.equals(gp.getPassword())) {
+                    Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/gestorProdMenu.fxml"));
+                    Scene regCena = new Scene(root);
+                    Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                    stage.setScene(regCena);
+                    stage.setTitle("Menu Gestor de Produção");
+                    stage.show();
+
+                    return;
+                }
+            }
+
+            for (gestorVendas gv : repo.getGestoresVendasMap().values()) {
+                if (user.equalsIgnoreCase(gv.getUsername()) && password.equals(gv.getPassword())) {
+                    Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/gestorVendasMenu.fxml"));
+                    Scene regCena = new Scene(root);
+                    Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                    stage.setScene(regCena);
+                    stage.setTitle("Menu Gestor de Vendas");
+                    stage.show();
+
+                    return;
+                }
+            }
+
+
         } catch (IOException e) {
             System.out.println("Erro na funcao Login! \n" + e);
         }

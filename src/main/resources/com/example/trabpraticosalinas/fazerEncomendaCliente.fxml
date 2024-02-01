@@ -13,12 +13,6 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MakeAnAppointmentController">
     <left>
         <AnchorPane prefHeight="500.0" prefWidth="705.0" style="-fx-background-color: #93CAED;" BorderPane.alignment="CENTER">
-            <children>
-                <ImageView fitHeight="64.0" fitWidth="92.0" layoutX="4.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../../dentalcare.png" />
-                    </image>
-                </ImageView>
                 <Label layoutX="238.0" layoutY="16.0" text="Fazer Encomenda" textFill="WHITE">
                     <font>
                         <Font size="27.0" />
@@ -49,7 +43,6 @@
                         <Font size="15.0" />
                     </font>
                 </Label>
-            </children>
         </AnchorPane>
     </left>
 </BorderPane>

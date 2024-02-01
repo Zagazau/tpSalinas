@@ -22,7 +22,16 @@ public class gestorProducaoMenuController {
 
     @FXML
     void criarLote(ActionEvent event) {
-
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/CriarLote.fxml"));
+            Scene regCena = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(regCena);
+            stage.setTitle("Menu Gestor Produção");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
