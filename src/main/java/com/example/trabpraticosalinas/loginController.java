@@ -46,7 +46,7 @@ public class loginController {
                     sd.loggedAdmin = a;
                     found = true;
                     System.out.println("Login com Sucesso!");
-                    Parent root = FXMLLoader.load(getClass().getResource("adminMenu.fxml"));
+                    Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/clenteMenu.fxml"));
                     Scene regCena = new Scene(root);
                     Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                     stage.setScene(regCena);
