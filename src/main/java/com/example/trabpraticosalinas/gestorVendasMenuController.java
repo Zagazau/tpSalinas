@@ -9,29 +9,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class clienteMenuController {
-
-    @FXML
-    private Button fazerEncomenda;
-
-    @FXML
-    private Button gerirEncomendas;
+public class gestorVendasMenuController {
 
     @FXML
     private Button goBack;
 
     @FXML
-    private Button pagarEncomenda;
+    private Button listarEncomendas;
 
     @FXML
-    void fazerEncomenda(ActionEvent event) {
-
-    }
-
-    @FXML
-    void gerirEncomendas(ActionEvent event) {
-
-    }
+    private Button tratarEncomendas;
 
     @FXML
     void goBack(javafx.event.ActionEvent event) {
@@ -48,7 +35,12 @@ public class clienteMenuController {
     }
 
     @FXML
-    void pagarEncomenda(ActionEvent event) {
+    void listarEncomendas(ActionEvent event) {
+
+    }
+
+    @FXML
+    void tratarEncomendas(ActionEvent event) {
 
     }
 

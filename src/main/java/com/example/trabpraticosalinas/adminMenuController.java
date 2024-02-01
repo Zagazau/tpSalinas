@@ -21,6 +21,20 @@ public class adminMenuController {
     private Button goBack;
 
     @FXML
+    void goBack(javafx.event.ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/login.fxml"));
+            Scene regCena = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(regCena);
+            stage.setTitle("Login");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     void createUser(javafx.event.ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/criarUtilizadores.fxml"));
