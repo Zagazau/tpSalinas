@@ -12,7 +12,7 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.trabpraticosalinas.criarUtilizadoresAdminController">
    <center>
         <AnchorPane prefHeight="500.0" prefWidth="705.0" style="-fx-background-color: #B0C1FF;" BorderPane.alignment="CENTER">
-         <children>
+
                 <Label layoutX="217.0" layoutY="14.0" text="Criar Utilizadores" textFill="WHITE">
                     <font>
                         <Font size="27.0" />
@@ -58,7 +58,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Button fx:id="backButton" layoutX="188.0" layoutY="431.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="325.0" text="Voltar" />
+            <Button fx:id="backButton" layoutX="188.0" layoutY="431.0" mnemonicParsing="false" onAction="#goback" prefHeight="31.0" prefWidth="325.0" text="Voltar" />
             <Label layoutX="24.0" layoutY="69.0" text="Username">
                <font>
                   <Font size="15.0" />
@@ -78,7 +78,6 @@
                   <Font size="15.0" />
                </font>
             </Label>
-         </children>
         </AnchorPane>
    </center>
 </BorderPane>

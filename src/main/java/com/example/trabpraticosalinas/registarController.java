@@ -12,6 +12,8 @@ import javafx.stage.Stage;
 
 import javafx.event.ActionEvent;
 
+import java.io.IOException;
+
 public class registarController {
 
     @FXML
@@ -61,6 +63,38 @@ public class registarController {
     }
 
     @FXML
+    public <ClienteMenuController> void redirectToLogin(ActionEvent event) {
+        try {
+            String userType = UserTypeChoiceBox.getValue();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+            Parent root = loader.load();
+            Scene loginScene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(loginScene);
+            stage.setTitle("Login");
+
+            // Se o tipo de usuário for "Cliente", redirecione para o clienteMenu.fxml
+            if ("Cliente".equals(userType)) {
+                FXMLLoader clienteMenuLoader = new FXMLLoader(getClass().getResource("clienteMenu.fxml"));
+                Parent clienteMenuRoot = clienteMenuLoader.load();
+                ClienteMenuController clienteMenuController = clienteMenuLoader.getController();
+
+                // Passe a informação do usuário, se necessário (por exemplo, o nome do cliente)
+                // clienteMenuController.setNomeDoCliente(nomeDoCliente);
+
+                Scene clienteMenuScene = new Scene(clienteMenuRoot);
+                stage.setScene(clienteMenuScene);
+                stage.setTitle("Cliente Menu");
+            }
+
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     public boolean register2(ActionEvent event) {
         if (checkNome(event) && checkLocalidade(event) && checkMorada(event) && checkTele(event) && checkCC(event) && checkNIF(event) && checkUsername(event) && checkPassword(event) && checkTipoUtilizador(event)) {
             if (UserTypeChoiceBox.getValue().equals("Cliente")) {
@@ -78,6 +112,7 @@ public class registarController {
                 ClienteBll c = new ClienteBll(repositorio);
                 c.criarNovoCliente(u1.getNome(), u1.getUsername(), u1.getPassword(), u1.getNumCC(), u1.getNIF(), u1.getTelefone(), u1.getMorada(), u1.getLocalidade());
 
+                redirectToLogin(event);
             } else if (UserTypeChoiceBox.getValue().equals("GestorVendas")) {
                 Utilizador gv1 = new gestorVendas();
                 gv1.setLocalidade(localidadeField.getText());
@@ -107,21 +142,11 @@ public class registarController {
 
                 gestorProducaoBll gp = new gestorProducaoBll(repositorio);
                 gp.criarNovoGestorProducao(gp1.getNome(), gp1.getUsername(), gp1.getPassword(), gp1.getNumCC(), gp1.getNIF(), gp1.getTelefone(), gp1.getMorada(), gp1.getLocalidade());
-                }
+            }
 
-                try {
-                    Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
-                    Scene regCena = new Scene(root);
-                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    stage.setScene(regCena);
-                    stage.setTitle("Login");
-                    stage.show();
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                if (!checkUsername(event)) {
+            // Remove o bloco try-catch redundante que estava criando um novo FXMLLoader
+            // e uma nova Scene para o login.
+            if (!checkUsername(event)) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erro");
                 alert.setHeaderText("Username errado!");
@@ -148,7 +173,7 @@ public class registarController {
             } else if (!checkTele(event)) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erro");
-                alert.setHeaderText("Numero de telemovel errado. Por favor, insira novamente!");
+                alert.setHeaderText("Número de telemovel errado. Por favor, insira novamente!");
                 alert.show();
                 return false;
             }

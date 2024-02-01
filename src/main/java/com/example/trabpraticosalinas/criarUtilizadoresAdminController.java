@@ -22,6 +22,7 @@ public class criarUtilizadoresAdminController {
     @FXML
     ObservableList<String> UserTypeList = FXCollections.observableArrayList("Cliente", "GestorVendas", "GestorProdução");
 
+    @FXML
     private ChoiceBox<String> UserTypeChoiceBox;
 
     @FXML
@@ -56,7 +57,7 @@ public class criarUtilizadoresAdminController {
     @FXML
     void goback(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/adminMenu.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/adminMenu.fxml"));
             Scene regCena = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(regCena);

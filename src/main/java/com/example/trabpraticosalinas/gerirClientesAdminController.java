@@ -1,5 +1,7 @@
 package com.example.trabpraticosalinas;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,76 +12,93 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class gerirClientesAdminController {
 
     @FXML
-    private TableColumn<?, ?> CCNumberColumn;
+    private TableColumn<Cliente, String> CCNumberColumn;
 
     @FXML
-    private TableColumn<?, ?> NIFColumn;
+    private TableColumn<Cliente, String> NIFColumn;
 
     @FXML
-    private TableColumn<?, ?> NIFColumn1;
+    private TableColumn<Cliente, String> morada;
 
     @FXML
     private Button backButton;
 
     @FXML
-    private TableView<?> customersTable;
+    private TableView<Cliente> customersTable;
 
     @FXML
     private Button deleteCustomerButton;
 
     @FXML
-    private TableColumn<?, ?> emailColumn;
+    private TableColumn<Cliente, String> localidade;
 
     @FXML
-    private TableColumn<?, ?> emailColumn2;
+    private TableColumn<Cliente, String> fullnameColumn;
 
     @FXML
-    private TableColumn<?, ?> fullnameColumn;
+    private TableColumn<Cliente, String> phonenumberColumn;
 
     @FXML
-    private TableColumn<?, ?> phonenumberColumn;
+    private TableColumn<Cliente, String> usernameColumn;
+
 
     @FXML
-    private TableColumn<?, ?> usernameColumn;
+    public void initialize() {
+        Repositorio repositorio = Repositorio.getRepo();
+        repositorio.deserialize("info.repo");
+
+        usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
+        fullnameColumn.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        phonenumberColumn.setCellValueFactory(new PropertyValueFactory<>("telefone"));
+        NIFColumn.setCellValueFactory(new PropertyValueFactory<>("NIF"));
+        CCNumberColumn.setCellValueFactory(new PropertyValueFactory<>("numCC"));
+        morada.setCellValueFactory(new PropertyValueFactory<>("morada"));
+        localidade.setCellValueFactory(new PropertyValueFactory<>("localidade"));
+
+        List<Cliente> clientes = new ArrayList<>();
+
+        for (Cliente aux : repositorio.getClientesMap().values()) {
+            clientes.add(aux);
+        }
+
+        ObservableList<Cliente> clientesList = FXCollections.observableArrayList(clientes);
+        customersTable.setItems(clientesList);
+    }
+
+
 
     @FXML
     public void deleteCustomer(javafx.event.ActionEvent ActionEvent) {
         Cliente c = (Cliente) customersTable.getSelectionModel().getSelectedItem();
 
-        if(c != null) {
+        if (c != null) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmação");
             alert.setHeaderText("Tem a certeza que pretende eliminar este cliente?");
             alert.showAndWait();
 
-            if(alert.getResult().getText().equals("OK")) {
+            if (alert.getResult().getText().equals("OK")) {
                 Repositorio repositorio = Repositorio.getRepositorio();
 
                 repositorio.getClientesMap().remove(c.getNIF());
 
+                repositorio.getClienteEncomendaMap().remove(c);
 
-             /*   for (List<Appointment> appointments : repository.getAppointments().values()) {
-                    Iterator<Appointment> iterator = appointments.iterator();
-                    while (iterator.hasNext()) {
-                        Appointment appointment = iterator.next();
-                        if (appointment.getCustomer().getNIF().equals(customer.getNIF())) {
-                            iterator.remove();
-                        }
-                    }
-                }
-*/
                 repositorio.serialize("info.repo");
                 customersTable.getItems().remove(c);
             }
-        } else{
+        } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erro");
             alert.setHeaderText("Por favor, selecione um cliente!");
@@ -87,10 +106,12 @@ public class gerirClientesAdminController {
         }
     }
 
+
+
     @FXML
-    void goback(ActionEvent event) {
+    void goBack(javafx.event.ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/adminMenu.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/adminMenu.fxml"));
             Scene regCena = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(regCena);
@@ -100,5 +121,6 @@ public class gerirClientesAdminController {
             e.printStackTrace();
         }
     }
+
 
 }

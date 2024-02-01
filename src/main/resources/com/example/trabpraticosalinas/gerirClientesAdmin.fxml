@@ -26,8 +26,8 @@
                         <TableColumn fx:id="NIFColumn" prefWidth="66.0" text="NIF" />
                         <TableColumn fx:id="CCNumberColumn" prefWidth="160.0" text="Numero CC" />
                         <TableColumn fx:id="emailColumn" minWidth="0.0" prefWidth="0.0" text="Morada" />
-                  <TableColumn fx:id="emailColumn2" prefWidth="79.0" text="Morada" />
-                  <TableColumn fx:id="NIFColumn1" minWidth="0.0" prefWidth="93.0" text="Localidade" />
+                  <TableColumn fx:id="morada" prefWidth="79.0" text="Morada" />
+                  <TableColumn fx:id="localidade" minWidth="0.0" prefWidth="93.0" text="Localidade" />
                     </columns>
                 </TableView>
                 <Button fx:id="deleteCustomerButton" layoutX="188.0" layoutY="371.0" mnemonicParsing="false" onAction="#deleteCustomer" prefHeight="44.0" prefWidth="288.0" text="Eliminar Cliente" />

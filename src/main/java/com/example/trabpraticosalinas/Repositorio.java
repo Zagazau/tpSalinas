@@ -25,10 +25,13 @@ public class Repositorio implements Serializable {
     private Map<Tanque, List<Marnoto>> tanqueMarnoto = new HashMap<>();
     private Map<produtoFinal, List<loteFabrico>> produtoLotesFabrico = new HashMap<>();
     private Map<String, Venda> vendasMap = new HashMap<>();  // Mapa de <ID, Venda>
+    private Map<Cliente, Encomenda> clienteEncomendaMap = new HashMap<>();
 
-    private transient ReentrantLock lock = new ReentrantLock();
+    private transient ReentrantLock lock;
 
-    public Repositorio (){}
+    public Repositorio() {
+        this.lock = new ReentrantLock();
+    }
 
     public void lock() {
         lock.lock();
@@ -87,6 +90,10 @@ public class Repositorio implements Serializable {
     }
     public Map<String, Venda> getVendasMap() {
         return vendasMap;
+    }
+
+    public Map<Cliente, Encomenda> getClienteEncomendaMap() {
+        return clienteEncomendaMap;
     }
 
     public static Repositorio getRepositorio(){

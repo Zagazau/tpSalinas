@@ -46,12 +46,26 @@ public class loginController {
                     sd.loggedAdmin = a;
                     found = true;
                     System.out.println("Login com Sucesso!");
-                    Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/clenteMenu.fxml"));
+                    Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/adminMenu.fxml"));
                     Scene regCena = new Scene(root);
                     Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                     stage.setScene(regCena);
                     stage.setTitle("Menu Admin");
                     stage.show();
+                }
+            }
+
+            for (Cliente c : repo.getClientesMap().values()) {
+                if (user.equalsIgnoreCase(c.getUsername()) && password.equals(c.getPassword())) {
+
+                    Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/clienteMenu.fxml"));
+                    Scene regCena = new Scene(root);
+                    Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                    stage.setScene(regCena);
+                    stage.setTitle("Menu Cliente");
+                    stage.show();
+
+                    return;
                 }
             }
 
