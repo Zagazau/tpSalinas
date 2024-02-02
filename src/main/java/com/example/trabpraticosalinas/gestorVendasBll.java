@@ -1,31 +1,11 @@
 package com.example.trabpraticosalinas;
 
 public class gestorVendasBll {
-    private Repositorio repositorio;
+    public static void registargestorVendas(gestorVendas gv) {
+        Repositorio.getRepositorio().getGestoresVendasMap().put(gv.getNIF(), gv);
 
-    public gestorVendasBll(Repositorio repositorio) {
-        this.repositorio = repositorio;
-    }
-
-    public void criarNovoGestorVendas(String nome, String username, String password, String numCC, String NIF, String telefone, String morada, String localidade) {
-        gestorVendas novoGestorVendas = new gestorVendas(nome, username, password, numCC, NIF, telefone, morada, localidade);
-        repositorio.lock();
-
-        try {
-            repositorio.getGestoresVendasMap().put(username, novoGestorVendas);
-            Repositorio.serialize(repositorio, "info.repo");        } finally {
-            repositorio.unlock();
-        }
-    }
-
-    public gestorVendas obterGestorVendasPorUsername(String username) {
-        repositorio.lock();
-
-        try {
-            return repositorio.getGestoresVendasMap().get(username);
-        } finally {
-            repositorio.unlock();
-        }
+        System.out.println("Admin criado com sucesso.");
+        Repositorio.getRepositorio().serialize(Repositorio.getRepositorio(), "info.repo");
     }
 }
 
