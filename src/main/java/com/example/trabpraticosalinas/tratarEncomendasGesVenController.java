@@ -11,42 +11,42 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
-public class gerirEncomendasController {
+public class tratarEncomendasGesVenController {
 
     @FXML
-    private TableColumn<?, ?> DataCollum;
+    private TableColumn<?, ?> DateColumn;
 
     @FXML
     private TableColumn<?, ?> ValorCollum;
 
     @FXML
-    private TableView<?> encomendasTable;
+    private Button alterarEncomenda;
 
     @FXML
     private Button backButton;
 
     @FXML
-    private Button cancelarEncomendaButton;
+    private TableColumn<?, ?> encomendaCollum;
+
+    @FXML
+    private TableView<?> encomendasTable;
 
     @FXML
     private TableColumn<?, ?> estadoEncomendaCollum;
 
     @FXML
-    private TableColumn<?, ?> idencomenda;
-
-    @FXML
-    void cancelarEncomenda(ActionEvent event) {
+    void alterarEncomenda(ActionEvent event) {
 
     }
 
     @FXML
-    void goBack(ActionEvent event) {
+    void goBack(javafx.event.ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/clienteMenu.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/gestorVendasMenu.fxml"));
             Scene regCena = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(regCena);
-            stage.setTitle("MenuCliente");
+            stage.setTitle("Login");
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -54,4 +54,3 @@ public class gerirEncomendasController {
     }
 
 }
-

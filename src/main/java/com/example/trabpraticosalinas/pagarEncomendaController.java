@@ -34,10 +34,16 @@ public class pagarEncomendaController {
     @FXML
     private Button payButton;
 
+
     @FXML
-    void goback(ActionEvent event) {
+    void pagarEncomenda(javafx.event.ActionEvent event) {
+
+    }
+
+    @FXML
+    public void goBack(javafx.event.ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/clienteMenu.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/clienteMenu.fxml"));
             Scene regCena = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(regCena);
@@ -47,10 +53,4 @@ public class pagarEncomendaController {
             e.printStackTrace();
         }
     }
-
-    @FXML
-    void pagarEncomenda(ActionEvent event) {
-
-    }
-
 }

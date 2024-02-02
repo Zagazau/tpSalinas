@@ -64,13 +64,13 @@ public class listarEncomendasController {
     */
 
     @FXML
-    void goBack(ActionEvent event) {
+    void goBack(javafx.event.ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/gestorVendasMenu.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/gestorVendasMenu.fxml"));
             Scene regCena = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(regCena);
-            stage.setTitle("Menu Gestor Vendas");
+            stage.setTitle("Login");
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();

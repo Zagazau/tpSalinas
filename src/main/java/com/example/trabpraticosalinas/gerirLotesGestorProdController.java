@@ -7,37 +7,43 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
-public class fazerEncomendaController {
+public class gerirLotesGestorProdController {
+
+    @FXML
+    private Button apagarLote;
 
     @FXML
     private Button backButton;
 
     @FXML
-    private DatePicker datePicker;
+    private TableView<?> customersTable;
 
     @FXML
-    private Button encomendar;
+    private TableColumn<?, ?> diaLote;
 
     @FXML
-    private TextField quantidadeField;
+    private TableColumn<?, ?> pesoLote;
 
     @FXML
-    void fazerEncomenda(ActionEvent event) {
+    private TableColumn<?, ?> tipoLote;
+
+    @FXML
+    void apagarLote(ActionEvent event) {
 
     }
 
     @FXML
-    void goBack(ActionEvent event) {
+    void goBack(javafx.event.ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/clienteMenu.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/gestorProdMenu.fxml"));
             Scene regCena = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(regCena);
-            stage.setTitle("MenuCliente");
+            stage.setTitle("Login");
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -45,3 +51,4 @@ public class fazerEncomendaController {
     }
 
 }
+

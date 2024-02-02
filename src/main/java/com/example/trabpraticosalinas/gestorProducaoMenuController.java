@@ -21,13 +21,13 @@ public class gestorProducaoMenuController {
     private Button goBack;
 
     @FXML
-    void criarLote(ActionEvent event) {
+    void criarLote(javafx.event.ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/CriarLote.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/CriarLote.fxml"));
             Scene regCena = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(regCena);
-            stage.setTitle("Menu Gestor Produção");
+            stage.setTitle("ListaEncomendas");
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -36,7 +36,16 @@ public class gestorProducaoMenuController {
 
     @FXML
     void gerirLotes(ActionEvent event) {
-
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/gerirLotesGestorProd.fxml"));
+            Scene regCena = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(regCena);
+            stage.setTitle("ListaEncomendas");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

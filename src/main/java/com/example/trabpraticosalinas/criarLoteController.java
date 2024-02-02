@@ -1,5 +1,7 @@
 package com.example.trabpraticosalinas;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +21,15 @@ import java.util.UUID;
 public class criarLoteController {
 
     @FXML
-    private ChoiceBox<?> UserTypeChoiceBox;
+    ObservableList<String> UserTypeList = FXCollections.observableArrayList("Sal", "Flor de Sal");
+
+    @FXML
+    private ChoiceBox<String> tipo;
+
+    @FXML
+    void initialize() {
+        tipo.setItems(UserTypeList);
+    }
 
     @FXML
     private Button backButton;
@@ -54,7 +64,7 @@ public class criarLoteController {
             // Serializar o repositório atualizado
             Repositorio.serialize(repositorio, "info.repo");
 
-            // Redirecionar para outra cena ou realizar outras ações
+
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/gestorProdMenu.fxml"));
                 Scene regCena = new Scene(root);
@@ -71,9 +81,9 @@ public class criarLoteController {
     }
 
     @FXML
-    void goback(ActionEvent event) {
+    void goBack(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/gestorProdMenu.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/gestorProdMenu.fxml"));
             Scene regCena = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(regCena);

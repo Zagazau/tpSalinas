@@ -36,12 +36,30 @@ public class gestorVendasMenuController {
 
     @FXML
     void listarEncomendas(ActionEvent event) {
-
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/ListarEncomendasGesVendas.fxml"));
+            Scene regCena = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(regCena);
+            stage.setTitle("ListaEncomendas");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void tratarEncomendas(ActionEvent event) {
-
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/tratarEncomendasGesVen.fxml"));
+            Scene regCena = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(regCena);
+            stage.setTitle("TratarEncomendas");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

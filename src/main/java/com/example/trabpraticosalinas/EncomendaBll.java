@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class EncomendaBll {
+    /*
     public static void criarEncomenda(Encomenda encomenda, Cliente cliente) {
         encomenda.setEstado(EncomendaEstado.PROCESSADA);
         encomenda.setCliente(cliente);
@@ -45,4 +46,6 @@ public class EncomendaBll {
 
         Repositorio.getRepositorio().serialize(Repositorio.getRepositorio(), "info.repo");
     }
+
+     */
 }

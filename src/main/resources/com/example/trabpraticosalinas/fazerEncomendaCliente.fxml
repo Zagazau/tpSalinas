@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" type="BorderPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.trabpraticosalinas.fazerEncomendaController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.trabpraticosalinas.fazerEncomendaController">
     <left>
         <AnchorPane prefHeight="500.0" prefWidth="705.0" style="-fx-background-color: #B0C1FF;" BorderPane.alignment="CENTER">
                 <Label layoutX="238.0" layoutY="16.0" text="Fazer Encomenda" textFill="WHITE">
@@ -32,4 +32,4 @@
                 <TextField fx:id="quantidadeField" layoutX="44.0" layoutY="122.0" prefHeight="34.0" prefWidth="455.0" />
         </AnchorPane>
     </left>
-</fx:root>
+</BorderPane>

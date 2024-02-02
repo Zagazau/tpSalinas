@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class clienteMenuController {
 
     @FXML
@@ -23,15 +25,6 @@ public class clienteMenuController {
     @FXML
     private Button pagarEncomenda;
 
-    @FXML
-    void fazerEncomenda(ActionEvent event) {
-
-    }
-
-    @FXML
-    void gerirEncomendas(ActionEvent event) {
-
-    }
 
     @FXML
     void goBack(javafx.event.ActionEvent event) {
@@ -46,10 +39,52 @@ public class clienteMenuController {
             e.printStackTrace();
         }
     }
+    @FXML
+    void fazerEncomenda(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/fazerEncomendaCliente.fxml"));
+            Scene regCena = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(regCena);
+            stage.setTitle("Fazer Encomenda");
+            stage.show();
+        } catch (Exception e) {
+            System.out.println("Erro ao carregar o arquivo FXML: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     void pagarEncomenda(ActionEvent event) {
-
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/pagarEncomenda.fxml"));
+            Scene regCena = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(regCena);
+            stage.setTitle("PagarEncomenda");
+            stage.show();
+        } catch (Exception e) {
+            System.out.println("Erro ao carregar o arquivo FXML: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
+    @FXML
+    void gerirEncomendas(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/gerirEncomendasCliente.fxml"));
+            Scene regCena = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(regCena);
+            stage.setTitle("Fazer Encomenda");
+            stage.show();
+        } catch (Exception e) {
+            System.out.println("Erro ao carregar o arquivo FXML: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+
+
+
 
 }
