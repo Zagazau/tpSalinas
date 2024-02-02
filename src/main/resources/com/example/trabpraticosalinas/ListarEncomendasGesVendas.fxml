@@ -11,22 +11,20 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.trabpraticosalinas.listarEncomendasController">
     <left>
         <AnchorPane prefHeight="500.0" prefWidth="705.0" style="-fx-background-color: #B0C1FF;" BorderPane.alignment="CENTER">
-            <children>
-                <Label layoutX="235.0" layoutY="35.0" text="Listar Encomendas" textFill="WHITE">
+            <Label layoutX="235.0" layoutY="35.0" text="Listar Encomendas" textFill="WHITE">
                     <font>
                         <Font size="27.0" />
                     </font>
                 </Label>
                 <Button fx:id="backButton" layoutX="200.0" layoutY="381.0" mnemonicParsing="false" onAction="#goBack" prefHeight="31.0" prefWidth="293.0" text="Voltar" />
-                <TableView fx:id="appointmentsTable" layoutX="29.0" layoutY="100.0" prefHeight="264.0" prefWidth="634.0">
+                <TableView fx:id="encomendasTable" layoutX="29.0" layoutY="100.0" prefHeight="264.0" prefWidth="634.0">
                     <columns>
-                        <TableColumn fx:id="AppointmentIdColumn" prefWidth="75.0" text="Encomenda " />
-                        <TableColumn fx:id="DateColumn" prefWidth="154.0" text="Data" />
-                        <TableColumn fx:id="AppointmentStateColumn" prefWidth="199.0" text="Estado da Encomenda" />
-                        <TableColumn fx:id="TotalValueColumn" prefWidth="205.0" text="Valor" />
+                        <TableColumn fx:id="encomendaCollum" prefWidth="91.0" text="Encomenda " />
+                        <TableColumn fx:id="DateColumn" prefWidth="138.0" text="Data" />
+                        <TableColumn fx:id="estadoEncomendaCollum" prefWidth="199.0" text="Estado da Encomenda" />
+                        <TableColumn fx:id="ValorCollum" prefWidth="205.0" text="Valor" />
                     </columns>
                 </TableView>
-            </children>
         </AnchorPane>
     </left>
 </BorderPane>

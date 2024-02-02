@@ -52,7 +52,7 @@ public class criarLoteController {
             repositorio.getProdutosFinaisMap().put(produtoFinal.getIdProdutoFinal(), produtoFinal);
 
             // Serializar o repositório atualizado
-            repositorio.serialize("info.repo");
+            Repositorio.serialize(repositorio, "info.repo");
 
             // Redirecionar para outra cena ou realizar outras ações
             try {

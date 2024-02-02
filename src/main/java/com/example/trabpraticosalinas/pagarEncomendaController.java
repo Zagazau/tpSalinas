@@ -1,35 +1,35 @@
 package com.example.trabpraticosalinas;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.stage.Stage;
+        import javafx.event.ActionEvent;
+        import javafx.fxml.FXML;
+        import javafx.fxml.FXMLLoader;
+        import javafx.scene.Node;
+        import javafx.scene.Parent;
+        import javafx.scene.Scene;
+        import javafx.scene.control.Button;
+        import javafx.scene.control.TableColumn;
+        import javafx.scene.control.TableView;
+        import javafx.stage.Stage;
 
 public class pagarEncomendaController {
 
     @FXML
-    private TableColumn<?, ?> AppointmentIdColumn;
-
-    @FXML
-    private TableColumn<?, ?> AppointmentStateColumn;
-
-    @FXML
-    private TableColumn<?, ?> DateColumn;
+    private TableColumn<?, ?> DataColumn;
 
     @FXML
     private TableColumn<?, ?> TotalValueColumn;
 
     @FXML
-    private TableView<?> appointmentsTable;
+    private TableView<?> encomendasTable;
 
     @FXML
     private Button backButton;
+
+    @FXML
+    private TableColumn<?, ?> estadoEncomendaCollum;
+
+    @FXML
+    private TableColumn<?, ?> idEncomendaCollum;
 
     @FXML
     private Button payButton;

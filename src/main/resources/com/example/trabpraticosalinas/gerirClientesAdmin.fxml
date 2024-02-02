@@ -11,7 +11,6 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.trabpraticosalinas.gerirClientesAdminController">
     <left>
         <AnchorPane prefHeight="500.0" prefWidth="705.0" style="-fx-background-color: #B0C1FF;" BorderPane.alignment="CENTER">
-            <children>
                 <Label layoutX="270.0" layoutY="37.0" text="Gerir Clientes" textFill="WHITE">
                     <font>
                         <Font size="27.0" />
@@ -31,7 +30,6 @@
                     </columns>
                 </TableView>
                 <Button fx:id="deleteCustomerButton" layoutX="188.0" layoutY="371.0" mnemonicParsing="false" onAction="#deleteCustomer" prefHeight="44.0" prefWidth="288.0" text="Eliminar Cliente" />
-            </children>
         </AnchorPane>
     </left>
 </BorderPane>
