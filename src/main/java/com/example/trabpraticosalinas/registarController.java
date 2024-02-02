@@ -32,9 +32,6 @@ public class registarController {
     private TextField addressField;
 
     @FXML
-    private Button goBack;
-
-    @FXML
     private TextField fullNameField;
 
     @FXML
@@ -76,22 +73,22 @@ public class registarController {
         try {
             String userType = UserTypeChoiceBox.getValue();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent root = loader.load();
             Scene loginScene = new Scene(root);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(loginScene);
-            stage.setTitle("Login");
 
             if ("Cliente".equals(userType) || "gestorVendas".equals(userType) || "gestorProducao".equals(userType)) {
                 FXMLLoader menuLoader = new FXMLLoader(getClass().getResource(fxmlPath));
                 Parent menuRoot = menuLoader.load();
                 Scene menuScene = new Scene(menuRoot);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(menuScene);
                 stage.setTitle(title);
+            } else {
+                Stage stage = new Stage();
+                stage.setScene(loginScene);
+                stage.setTitle(title);
             }
-
-            stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -111,8 +108,9 @@ public class registarController {
                 u1.setUsername(usernameField.getText());
                 u1.setPassword(passwordField.getText());
 
-                Repositorio repositorio = new Repositorio();
                 ClienteBll.criarNovoCliente((Cliente) u1);
+
+                Repositorio repositorio = new Repositorio();
                 redirectToLogin(event, "login.fxml", "Login");
             } else if (UserTypeChoiceBox.getValue().equals("GestorVendas")) {
                 Utilizador gv1 = new gestorVendas();
@@ -127,7 +125,7 @@ public class registarController {
                 Repositorio repositorio = new Repositorio();
 
                 gestorVendasBll.registargestorVendas((gestorVendas) gv1);
-                redirectToLogin(event, "login.fxml", "login");
+                redirectToLogin(event, "login.fxml", "Login");
             } else if (UserTypeChoiceBox.getValue().equals("GestorProdução")) {
                 Utilizador gp1 = new gestorProducao();
                 gp1.setLocalidade(localidadeField.getText());
@@ -142,6 +140,18 @@ public class registarController {
 
                 gestorProducaoBll.registarGestorProducao((gestorProducao) gp1);
                 redirectToLogin(event, "login.fxml", "Login");
+            }
+
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("adminMenu.fxml"));
+                Scene regCena = new Scene(root);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(regCena);
+                stage.setTitle("Login");
+                stage.show();
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
 
             if (!checkUsername(event)) {

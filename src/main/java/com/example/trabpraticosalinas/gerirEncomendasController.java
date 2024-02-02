@@ -35,11 +35,6 @@ public class gerirEncomendasController {
     private TableColumn<?, ?> idencomenda;
 
     @FXML
-    void cancelarEncomenda(ActionEvent event) {
-
-    }
-
-    @FXML
     void goBack(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/clienteMenu.fxml"));
@@ -52,6 +47,9 @@ public class gerirEncomendasController {
             e.printStackTrace();
         }
     }
+
+
+
 
 }
 

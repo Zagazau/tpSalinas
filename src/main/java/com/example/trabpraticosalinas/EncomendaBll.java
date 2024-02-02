@@ -11,18 +11,28 @@ public class EncomendaBll {
     }
 
     public static void criarEncomenda(Encomenda encomenda, Cliente cliente) {
-        encomenda.setEstado(EncomendaEstado.PROCESSADA);
-        encomenda.setCliente(cliente);
-        encomenda.setIdEncomenda(Repositorio.getRepositorio().getEncomendasMap().size() + 1);
+        if (encomenda != null && cliente != null) {
+            encomenda.setEstado(EncomendaEstado.PROCESSADA);
+            encomenda.setCliente(cliente);
+            encomenda.setIdEncomenda(Repositorio.getRepositorio().getEncomendasMap().size() + 1);
 
-        Map<String, List<Encomenda>> encomendasMap = Repositorio.getRepositorio().getEncomendasMap();
+            Map<String, List<Encomenda>> encomendasMap = Repositorio.getRepositorio().getEncomendasMap();
 
-        List<Encomenda> encomendas = encomendasMap.computeIfAbsent(cliente.getNIF(), k -> new ArrayList<>());
-        encomendas.add(encomenda);
+            List<Encomenda> encomendas = encomendasMap.computeIfAbsent(cliente.getNIF(), k -> new ArrayList<>());
+            encomendas.add(encomenda);
 
-        Repositorio.getRepositorio().getClientesMap().get(cliente.getNIF()).getEncomendas().add(encomenda);
-        System.out.println("Encomenda criada com sucesso!");
-        Repositorio.getRepositorio().serialize(Repositorio.getRepositorio(), "info.repo");
+            // Certifica-se de que o cliente está no repositório antes de adicionar a encomenda
+            if (Repositorio.getRepositorio().getClientesMap().containsKey(cliente.getNIF())) {
+                Repositorio.getRepositorio().getClientesMap().get(cliente.getNIF()).getEncomendas().add(encomenda);
+            } else {
+                System.out.println("Cliente não encontrado no repositório. A encomenda não foi adicionada ao cliente.");
+            }
+
+            System.out.println("Encomenda criada com sucesso!");
+            Repositorio.getRepositorio().serialize(Repositorio.getRepositorio(), "info.repo");
+        } else {
+            System.out.println("Encomenda ou cliente inválido(s). A encomenda não foi criada.");
+        }
     }
 
     public static void atualizarEncomenda() {
