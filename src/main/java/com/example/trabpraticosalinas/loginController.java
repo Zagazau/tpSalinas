@@ -37,21 +37,20 @@ public class loginController {
             String user = usernameField.getText();
             String password = passwordField.getText();
             SessionData sd = new SessionData();
-            boolean found = false;
 
             Repositorio repo = Repositorio.getRepositorio();
 
             for (Admin a : repo.getAdminsMap().values()) {
                 if (usernameField.getText().equalsIgnoreCase(a.getUsername()) && passwordField.getText().equals(a.getPassword())) {
                     sd.loggedAdmin = a;
-                    found = true;
-                    System.out.println("Login com Sucesso!");
+                    System.out.println("Login com Sucesso como Admin!");
                     Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/adminMenu.fxml"));
                     Scene regCena = new Scene(root);
                     Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                     stage.setScene(regCena);
                     stage.setTitle("Menu Admin");
                     stage.show();
+                    return;
                 }
             }
 
@@ -71,35 +70,38 @@ public class loginController {
 
             for (gestorProducao gp : repo.getGestoresProducaoMap().values()) {
                 if (user.equalsIgnoreCase(gp.getUsername()) && password.equals(gp.getPassword())) {
+                    sd.loggedgestorProducao = gp;
                     Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/gestorProdMenu.fxml"));
                     Scene regCena = new Scene(root);
                     Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                     stage.setScene(regCena);
                     stage.setTitle("Menu Gestor de Produção");
                     stage.show();
-
                     return;
                 }
             }
 
             for (gestorVendas gv : repo.getGestoresVendasMap().values()) {
                 if (user.equalsIgnoreCase(gv.getUsername()) && password.equals(gv.getPassword())) {
+                    sd.loggedgestorVendas = gv;
                     Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/gestorVendasMenu.fxml"));
                     Scene regCena = new Scene(root);
                     Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                     stage.setScene(regCena);
                     stage.setTitle("Menu Gestor de Vendas");
                     stage.show();
-
                     return;
                 }
             }
 
+            System.out.println("Login falhou. Credenciais inválidas.");
 
         } catch (IOException e) {
-            System.out.println("Erro na funcao Login! \n" + e);
+            System.out.println("Erro na função Login! \n" + e);
         }
     }
+
+
 
     @FXML
     public void register(ActionEvent event) {

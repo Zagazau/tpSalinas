@@ -36,6 +36,8 @@ public class gerirClientesAdminController {
 
     @FXML
     private TableView<Cliente> customersTable;
+    @FXML
+    private ObservableList<Cliente> clientesList;
 
     @FXML
     private Button deleteCustomerButton;
@@ -55,7 +57,7 @@ public class gerirClientesAdminController {
 
     @FXML
     public void initialize() {
-        Repositorio repositorio = Repositorio.getRepo();
+        Repositorio repositorio = Repositorio.getRepositorio();
         repositorio.deserialize("info.repo");
 
         usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
@@ -66,13 +68,10 @@ public class gerirClientesAdminController {
         morada.setCellValueFactory(new PropertyValueFactory<>("morada"));
         localidade.setCellValueFactory(new PropertyValueFactory<>("localidade"));
 
-        List<Cliente> clientes = new ArrayList<>();
+        // Inicialize a lista de clientes observáveis
+        clientesList = FXCollections.observableArrayList(repositorio.getClientesMap().values());
 
-        for (Cliente aux : repositorio.getClientesMap().values()) {
-            clientes.add(aux);
-        }
-
-        ObservableList<Cliente> clientesList = FXCollections.observableArrayList(clientes);
+        // Atribua a lista à tabela
         customersTable.setItems(clientesList);
     }
 

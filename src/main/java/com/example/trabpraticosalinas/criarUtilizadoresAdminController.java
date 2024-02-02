@@ -29,9 +29,6 @@ public class criarUtilizadoresAdminController {
     private TextField addressField;
 
     @FXML
-    private Button backButton;
-
-    @FXML
     private Button createUser;
 
     @FXML
@@ -82,9 +79,9 @@ public class criarUtilizadoresAdminController {
                 u1.setUsername(usernameField.getText());
                 u1.setPassword(passwordField.getText());
 
+                ClienteBll.criarNovoCliente((Cliente) u1);
+
                 Repositorio repositorio = new Repositorio();
-                ClienteBll c = new ClienteBll(repositorio);
-                c.criarNovoCliente(u1.getNome(), u1.getUsername(), u1.getPassword(), u1.getNumCC(), u1.getNIF(), u1.getTelefone(), u1.getMorada(), u1.getLocalidade());
 
             } else if (UserTypeChoiceBox.getValue().equals("GestorVendas")) {
                 Utilizador gv1 = new gestorVendas();
@@ -98,8 +95,7 @@ public class criarUtilizadoresAdminController {
                 gv1.setPassword(passwordField.getText());
                 Repositorio repositorio = new Repositorio();
 
-                gestorVendasBll gv = new gestorVendasBll(repositorio);
-                gv.criarNovoGestorVendas(gv1.getNome(), gv1.getUsername(), gv1.getPassword(), gv1.getNumCC(), gv1.getNIF(), gv1.getTelefone(), gv1.getMorada(), gv1.getLocalidade());
+                gestorVendasBll.registargestorVendas((gestorVendas) gv1);
 
             } else if (UserTypeChoiceBox.getValue().equals("GestorProdução")) {
                 Utilizador gp1 = new gestorProducao();
@@ -113,8 +109,7 @@ public class criarUtilizadoresAdminController {
                 gp1.setPassword(passwordField.getText());
                 Repositorio repositorio = new Repositorio();
 
-                gestorProducaoBll gp = new gestorProducaoBll(repositorio);
-                gp.criarNovoGestorProducao(gp1.getNome(), gp1.getUsername(), gp1.getPassword(), gp1.getNumCC(), gp1.getNIF(), gp1.getTelefone(), gp1.getMorada(), gp1.getLocalidade());
+                gestorProducaoBll.registarGestorProducao((gestorProducao) gp1);
             }
 
             try {

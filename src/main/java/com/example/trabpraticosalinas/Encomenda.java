@@ -1,17 +1,40 @@
 package com.example.trabpraticosalinas;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class Encomenda implements Serializable {
+    private int idEncomenda;
+    private LocalDate encomendaData;
     private Cliente cliente;
     private List<produtoFinal> lotesProdutoFinal;
-    private String estado;
+    private EncomendaEstado estado;
 
-    public Encomenda(Cliente cliente, List<produtoFinal> lotesProdutoFinal, String estado) {
+    public Encomenda(int idEncomenda, LocalDate encomendaData, Cliente cliente, List<produtoFinal> lotesProdutoFinal, EncomendaEstado estado) {
+        this.idEncomenda = idEncomenda;
+        this.encomendaData = encomendaData;
         this.cliente = cliente;
         this.lotesProdutoFinal = lotesProdutoFinal;
         this.estado = estado;
+    }
+
+    public int getIdEncomenda() {
+        return idEncomenda;
+    }
+
+    public void setIdEncomenda(int idEncomenda) {
+        this.idEncomenda = idEncomenda;
+    }
+
+    public ChronoLocalDate getEncomendaData() {
+        return encomendaData;
+    }
+
+    public void setEncomendaData(LocalDate encomendaData) {
+        this.encomendaData = encomendaData;
     }
 
     public Cliente getCliente() {
@@ -30,11 +53,11 @@ public class Encomenda implements Serializable {
         this.lotesProdutoFinal = lotesProdutoFinal;
     }
 
-    public String getEstado() {
+    public EncomendaEstado getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(EncomendaEstado estado) {
         this.estado = estado;
     }
 }

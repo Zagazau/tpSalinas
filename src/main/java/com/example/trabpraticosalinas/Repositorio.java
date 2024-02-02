@@ -20,7 +20,7 @@ public class Repositorio implements Serializable {
     private Map<UUID, Tanque> tanquesMap = new HashMap<>();  // Mapa de <ID, Tanque>
     private Map<String, loteFabrico> lotesFabricoMap = new HashMap<>();  // Mapa de <ID, LoteFabrico>
     private Map<UUID, produtoFinal> produtosFinaisMap = new HashMap<>();  // Mapa de <ID, ProdutoFinal>
-    private Map<String, Encomenda> encomendasMap = new HashMap<>();  // Mapa de <ID, Encomenda>
+    private Map<String, Encomenda> encomendasMap = new HashMap<>();   // Mapa de <NIFCustomer, Appointment>
     private Map<String, Marnoto> marnotosMap = new HashMap<>();  // Mapa de <ID, Marnoto>
     private Map<Marnoto, List<Tanque>> marnotoTanque = new HashMap<>();  // Mapa de <ID, Marnoto>
     private Map<Tanque, List<Marnoto>> tanqueMarnoto = new HashMap<>();
@@ -126,5 +126,6 @@ public class Repositorio implements Serializable {
         }
         return repo;
     }
+
 
 }
