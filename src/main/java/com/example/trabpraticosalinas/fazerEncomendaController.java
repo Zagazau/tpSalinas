@@ -46,35 +46,24 @@ public class fazerEncomendaController {
     @FXML
     void fazerEncomenda(ActionEvent event) {
         try {
-            // Recupera os valores dos campos
             LocalDate dataEncomenda = datePicker.getValue();
             int quantidade = Integer.parseInt(quantidadeField.getText());
-            String tipoEncomenda = UserTypeChoiceBox.getValue();
 
-
-            // Obtém o cliente logado a partir da SessionData
             Cliente cliente = SessionData.getLoggedCliente();
-
-            // Adicione um log para depuração
-            System.out.println("Cliente logado: " + cliente.getNome());
-
-            // Crie a lista de lotesProdutoFinal (pode ajustar conforme necessário)
             List<produtoFinal> lotesProdutoFinal = new ArrayList<>();
 
-            // Crie a encomenda
+            // Crie a encomenda sem chamar o método estático criarEncomenda
             Encomenda encomenda = new Encomenda(
-                    // Defina os valores apropriados para idEncomenda e estado
-                    1,
+                    0, // Use 0 como placeholder para o ID, pois o ID será atribuído pela lógica apropriada
                     dataEncomenda,
-                    cliente,  // Use o cliente obtido da SessionData
+                    cliente,
                     lotesProdutoFinal,
-                    EncomendaEstado.PROCESSADA  // ou o estado inicial desejado
+                    EncomendaEstado.PROCESSADA
             );
 
-            // Chame o método para criar a encomenda
+            // Use o método estático criarEncomenda da EncomendaBll para atribuir um ID adequado
             EncomendaBll.criarEncomenda(encomenda, cliente);
 
-            // Redirecione para a página de gerir encomendas (ou ajuste conforme necessário)
             Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/clienteMenu.fxml"));
             Scene regCena = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -86,6 +75,7 @@ public class fazerEncomendaController {
             e.printStackTrace();
         }
     }
+
 
     @FXML
     void goBack(ActionEvent event) {
