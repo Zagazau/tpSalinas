@@ -77,6 +77,7 @@ public class gerirClientesAdminController {
 
 
 
+
     @FXML
     public void deleteCustomer(javafx.event.ActionEvent ActionEvent) {
         Cliente c = (Cliente) customersTable.getSelectionModel().getSelectedItem();

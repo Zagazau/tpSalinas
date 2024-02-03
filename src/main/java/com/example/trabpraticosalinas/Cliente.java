@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 public class Cliente extends Utilizador {
-    List<Encomenda> encomendas;
+    static List<Encomenda> encomendas;
 
     public Cliente(String nome, String username, String password, String numCC, String NIF, String telefone, String morada, String localidade, List<Encomenda> encomendas) {
         super(nome, username, password, numCC, NIF, telefone, morada, localidade);
@@ -15,7 +15,7 @@ public class Cliente extends Utilizador {
         super();
     }
 
-    public List<Encomenda> getEncomendas() {
+    public static List<Encomenda> getEncomendas() {
         return encomendas;
     }
 

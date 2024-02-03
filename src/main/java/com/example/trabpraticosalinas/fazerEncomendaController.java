@@ -64,6 +64,8 @@ public class fazerEncomendaController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
     }
 
     @FXML

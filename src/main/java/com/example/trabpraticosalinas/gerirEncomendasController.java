@@ -34,6 +34,8 @@ public class gerirEncomendasController {
     @FXML
     private TableColumn<?, ?> idencomenda;
 
+
+
     @FXML
     void goBack(ActionEvent event) {
         try {
@@ -49,7 +51,7 @@ public class gerirEncomendasController {
     }
 
 
-
-
+    public void cancelarEncomenda(ActionEvent actionEvent) {
+    }
 }
 

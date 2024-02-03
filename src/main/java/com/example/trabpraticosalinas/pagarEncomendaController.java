@@ -1,6 +1,7 @@
 package com.example.trabpraticosalinas;
 
-        import javafx.event.ActionEvent;
+        import javafx.collections.FXCollections;
+        import javafx.collections.ObservableList;
         import javafx.fxml.FXML;
         import javafx.fxml.FXMLLoader;
         import javafx.scene.Node;
@@ -9,7 +10,10 @@ package com.example.trabpraticosalinas;
         import javafx.scene.control.Button;
         import javafx.scene.control.TableColumn;
         import javafx.scene.control.TableView;
+        import javafx.scene.control.cell.PropertyValueFactory;
         import javafx.stage.Stage;
+
+        import java.util.List;
 
 public class pagarEncomendaController {
 
@@ -20,7 +24,7 @@ public class pagarEncomendaController {
     private TableColumn<?, ?> TotalValueColumn;
 
     @FXML
-    private TableView<?> encomendasTable;
+    private TableView<Encomenda> encomendasTable;
 
     @FXML
     private Button backButton;
@@ -35,6 +39,39 @@ public class pagarEncomendaController {
     private Button payButton;
 
 
+    @FXML
+    public void initialize() {
+        // Configuração inicial da tabela
+        idEncomendaCollum.setCellValueFactory(new PropertyValueFactory<>("idEncomenda"));
+        DataColumn.setCellValueFactory(new PropertyValueFactory<>("encomendaData"));
+        estadoEncomendaCollum.setCellValueFactory(new PropertyValueFactory<>("estado"));
+        TotalValueColumn.setCellValueFactory(new PropertyValueFactory<>("totalValue"));
+
+        // Carrega as encomendas quando a cena é carregada
+        mostrarEncomendas();
+    }
+
+    private void mostrarEncomendas() {
+        Repositorio repositorio = Repositorio.getRepositorio();
+        repositorio.deserialize("info.repo");
+
+        // Supondo que você tenha uma referência ao ClienteAtual ou Cliente logado
+        // e que este objeto tenha um método getEncomendas
+        List<Encomenda> encomendas = Cliente.getEncomendas();
+
+        // Crie uma ObservableList a partir da lista de encomendas
+        ObservableList<Encomenda> encomendasObservable = FXCollections.observableArrayList(encomendas);
+
+        // Defina os itens da tabela com a ObservableList
+        encomendasTable.setItems(encomendasObservable);
+
+        // Agora, vincule as colunas aos campos corretos da classe Encomenda
+        idEncomendaCollum.setCellValueFactory(new PropertyValueFactory<>("idEncomenda"));
+        DataColumn.setCellValueFactory(new PropertyValueFactory<>("encomendaData"));
+        estadoEncomendaCollum.setCellValueFactory(new PropertyValueFactory<>("estado"));
+        TotalValueColumn.setCellValueFactory(new PropertyValueFactory<>("totalValue"));
+
+    }
     @FXML
     void pagarEncomenda(javafx.event.ActionEvent event) {
 
