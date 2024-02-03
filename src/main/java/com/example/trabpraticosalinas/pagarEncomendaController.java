@@ -27,16 +27,22 @@ public class pagarEncomendaController {
     private TableView<Encomenda> encomendasTable;
 
     @FXML
-    private Button backButton;
-
-    @FXML
     private TableColumn<?, ?> estadoEncomendaCollum;
 
     @FXML
     private TableColumn<?, ?> idEncomendaCollum;
 
     @FXML
+    private TableColumn<?, ?> tipoProduto;
+
+    @FXML
+    private TableColumn<?, ?> quantidade;
+
+    @FXML
     private Button payButton;
+
+    @FXML
+    private Button backButton;
 
 
     @FXML
@@ -46,6 +52,9 @@ public class pagarEncomendaController {
         DataColumn.setCellValueFactory(new PropertyValueFactory<>("encomendaData"));
         estadoEncomendaCollum.setCellValueFactory(new PropertyValueFactory<>("estado"));
         TotalValueColumn.setCellValueFactory(new PropertyValueFactory<>("totalValue"));
+        tipoProduto.setCellValueFactory(new PropertyValueFactory<>("tipoProduto"));
+        quantidade.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
+
 
         // Carrega as encomendas quando a cena é carregada
         mostrarEncomendas();
@@ -71,6 +80,8 @@ public class pagarEncomendaController {
         DataColumn.setCellValueFactory(new PropertyValueFactory<>("encomendaData"));
         estadoEncomendaCollum.setCellValueFactory(new PropertyValueFactory<>("estado"));
         TotalValueColumn.setCellValueFactory(new PropertyValueFactory<>("totalValue"));
+        tipoProduto.setCellValueFactory(new PropertyValueFactory<>("tipoProduto"));
+        quantidade.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
 
     }
     @FXML

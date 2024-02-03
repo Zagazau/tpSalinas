@@ -13,31 +13,37 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public class gerirEncomendasController {
 
-    @FXML
-    private TableColumn<Encomenda, Integer> idencomenda;
 
     @FXML
-    private TableColumn<Encomenda, LocalDate> DataCollum;
+    private TableColumn<?, ?> DataCollum;
 
     @FXML
-    private TableColumn<Encomenda, EncomendaEstado> estadoEncomendaCollum;
-
-    @FXML
-    private TableColumn<Encomenda, Double> ValorCollum;
-
-    @FXML
-    private TableView<Encomenda> encomendasTable;
+    private TableColumn<?, ?> ValorCollum;
 
     @FXML
     private Button backButton;
 
     @FXML
     private Button cancelarEncomendaButton;
+
+    @FXML
+    private TableView<Encomenda> encomendasTable;
+
+    @FXML
+    private TableColumn<?, ?> estadoEncomendaCollum;
+
+    @FXML
+    private TableColumn<?, ?> idencomenda;
+
+    @FXML
+    private TableColumn<?, ?> tipoProduto;
+
+    @FXML
+    private TableColumn<?, ?> quantidade;
 
     public gerirEncomendasController() {
     }
@@ -48,6 +54,9 @@ public class gerirEncomendasController {
         DataCollum.setCellValueFactory(new PropertyValueFactory<>("encomendaData"));
         estadoEncomendaCollum.setCellValueFactory(new PropertyValueFactory<>("estado"));
         ValorCollum.setCellValueFactory(new PropertyValueFactory<>("totalValue"));
+        tipoProduto.setCellValueFactory(new PropertyValueFactory<>("tipoProduto") );
+        quantidade.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
+
 
         // Carrega as encomendas ao inicializar
         mostrarEncomendas();
@@ -61,6 +70,7 @@ public class gerirEncomendasController {
         ObservableList<Encomenda> encomendasObservable = FXCollections.observableArrayList(encomendas);
 
         encomendasTable.setItems(encomendasObservable);
+
     }
 
     @FXML

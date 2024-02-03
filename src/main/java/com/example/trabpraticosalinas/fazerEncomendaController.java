@@ -58,7 +58,10 @@ public class fazerEncomendaController {
                     dataEncomenda,
                     cliente,
                     lotesProdutoFinal,
-                    EncomendaEstado.PROCESSADA
+                    EncomendaEstado.PROCESSADA,
+                    UserTypeChoiceBox.getValue(),
+                    quantidade
+
             );
 
             // Use o método estático criarEncomenda da EncomendaBll para atribuir um ID adequado

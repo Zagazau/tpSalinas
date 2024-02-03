@@ -21,10 +21,11 @@
                 <TableView fx:id="encomendasTable" layoutX="29.0" layoutY="100.0" prefHeight="264.0" prefWidth="634.0">
                     <columns>
                         <TableColumn fx:id="idencomenda" prefWidth="120.0" text="Id_Encomenda" />
-                        <TableColumn fx:id="DataCollum" prefWidth="110.0" text="Data" />
-                        <TableColumn fx:id="estadoEncomendaCollum" prefWidth="161.0" text="Estado da Encomenda" />
-                        <TableColumn fx:id="ValorCollum" prefWidth="103.0" text="Valor" />
-                  <TableColumn fx:id="tipoProduto" prefWidth="139.0" text="Tipo Produto" />
+                        <TableColumn fx:id="DataCollum" prefWidth="74.0" text="Data" />
+                        <TableColumn fx:id="estadoEncomendaCollum" prefWidth="152.0" text="Estado da Encomenda" />
+                        <TableColumn fx:id="ValorCollum" prefWidth="70.0" text="Valor" />
+                  <TableColumn fx:id="tipoProduto" prefWidth="110.0" text="Tipo Produto" />
+                  <TableColumn fx:id="quantidade" prefWidth="110.0" text="Quantidade" />
                     </columns>
                 </TableView>
                 <Button fx:id="cancelarEncomendaButton" layoutX="192.0" layoutY="380.0" mnemonicParsing="false" onAction="#cancelarEncomenda" prefHeight="44.0" prefWidth="309.0" text="Cancelar" />

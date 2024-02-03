@@ -20,10 +20,12 @@
                 <Button fx:id="backButton" layoutX="191.0" layoutY="430.0" mnemonicParsing="false" onAction="#goBack" prefHeight="31.0" prefWidth="308.0" text="Voltar" />
                 <TableView fx:id="encomendasTable" layoutX="29.0" layoutY="100.0" prefHeight="264.0" prefWidth="634.0">
                     <columns>
-                        <TableColumn fx:id="idEncomendaCollum" prefWidth="131.0" text="Id_Encomenda" />
-                        <TableColumn fx:id="DataColumn" prefWidth="140.0" text="Data" />
-                        <TableColumn fx:id="estadoEncomendaCollum" prefWidth="214.0" text="Estado da Encomenda" />
-                        <TableColumn fx:id="TotalValueColumn" prefWidth="148.0" text="Valor" />
+                        <TableColumn fx:id="idEncomendaCollum" prefWidth="88.0" text="Id_Encomenda" />
+                        <TableColumn fx:id="DataColumn" prefWidth="92.0" text="Data" />
+                        <TableColumn fx:id="estadoEncomendaCollum" prefWidth="153.0" text="Estado da Encomenda" />
+                        <TableColumn fx:id="TotalValueColumn" prefWidth="73.0" text="Valor" />
+                  <TableColumn fx:id="tipoProduto" prefWidth="123.0" text="Tipo Produto" />
+                  <TableColumn fx:id="quantidade" prefWidth="104.0" text="Quantidade" />
                     </columns>
                 </TableView>
                 <Button fx:id="payButton" layoutX="192.0" layoutY="380.0" mnemonicParsing="false" onAction="#pagarEncomenda" prefHeight="44.0" prefWidth="309.0" text="Pagar" />

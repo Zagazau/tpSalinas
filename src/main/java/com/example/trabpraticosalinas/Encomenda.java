@@ -13,8 +13,12 @@ public class Encomenda implements Serializable {
     private Cliente cliente;
     private List<produtoFinal> lotesProdutoFinal;
     private EncomendaEstado estado;
+    private String tipoProduto;
+    private int quantidade;
 
-    public Encomenda(int idEncomenda, LocalDate encomendaData, Cliente cliente, List<produtoFinal> lotesProdutoFinal, EncomendaEstado estado) {
+
+
+    public Encomenda(int idEncomenda, LocalDate encomendaData, Cliente cliente, List<produtoFinal> lotesProdutoFinal, EncomendaEstado estado, String tipoProduto, int quantidade) {
         this.idEncomenda = idEncomenda;
         this.encomendaData = encomendaData;
         this.cliente = cliente;
@@ -24,6 +28,8 @@ public class Encomenda implements Serializable {
             cliente.setEncomendas(new ArrayList<>());
         }
         cliente.getEncomendas().add(this);
+        this.tipoProduto=tipoProduto;
+        this.quantidade=quantidade;
     }
 
     public int getIdEncomenda() {
@@ -64,5 +70,21 @@ public class Encomenda implements Serializable {
 
     public void setEstado(EncomendaEstado estado) {
         this.estado = estado;
+    }
+
+    public String getTipoProduto() {
+        return tipoProduto;
+    }
+
+    public void setTipoProduto(String tipoProduto) {
+        this.tipoProduto = tipoProduto;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 }
