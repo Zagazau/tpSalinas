@@ -19,7 +19,7 @@ import java.util.List;
 public class gerirEncomendasController {
 
     @FXML
-    private TableColumn<Encomenda, Integer> idEncomenda;
+    private TableColumn<Encomenda, Integer> idencomenda;
 
     @FXML
     private TableColumn<Encomenda, LocalDate> DataCollum;
@@ -42,41 +42,35 @@ public class gerirEncomendasController {
     public gerirEncomendasController() {
     }
     @FXML
-    public void initialize() {
+    void initialize() {
         // Configuração inicial da tabela
-        idEncomenda.setCellValueFactory(new PropertyValueFactory<>("idEncomenda"));
+        idencomenda.setCellValueFactory(new PropertyValueFactory<>("idEncomenda"));
         DataCollum.setCellValueFactory(new PropertyValueFactory<>("encomendaData"));
         estadoEncomendaCollum.setCellValueFactory(new PropertyValueFactory<>("estado"));
         ValorCollum.setCellValueFactory(new PropertyValueFactory<>("totalValue"));
 
-        // Carrega as encomendas quando a cena é carregada
+        // Carrega as encomendas ao inicializar
         mostrarEncomendas();
     }
 
     private void mostrarEncomendas() {
-        // Supondo que você tenha uma referência ao ClienteAtual ou Cliente logado
-        // e que este objeto tenha um método getEncomendas
+
         Cliente cliente = SessionData.getLoggedCliente();
         List<Encomenda> encomendas = cliente.getEncomendas();
 
-        // Crie uma ObservableList a partir da lista de encomendas
         ObservableList<Encomenda> encomendasObservable = FXCollections.observableArrayList(encomendas);
 
-        // Defina os itens da tabela com a ObservableList
         encomendasTable.setItems(encomendasObservable);
     }
 
     @FXML
     void cancelarEncomenda() {
-        // Obtém a encomenda selecionada na tabela
         Encomenda encomendaSelecionada = encomendasTable.getSelectionModel().getSelectedItem();
 
         if (encomendaSelecionada != null) {
-            // Remova a encomenda da lista do cliente
             Cliente cliente = SessionData.getLoggedCliente();
             cliente.getEncomendas().remove(encomendaSelecionada);
 
-            // Atualiza a tabela
             encomendasTable.getItems().remove(encomendaSelecionada);
         }
     }
