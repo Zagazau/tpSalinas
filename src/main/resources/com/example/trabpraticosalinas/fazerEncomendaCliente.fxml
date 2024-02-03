@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -9,14 +10,14 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.trabpraticosalinas.fazerEncomendaController">
-    <left>
+   <top>
         <AnchorPane prefHeight="500.0" prefWidth="705.0" style="-fx-background-color: #B0C1FF;" BorderPane.alignment="CENTER">
                 <Label layoutX="238.0" layoutY="16.0" text="Fazer Encomenda" textFill="WHITE">
                     <font>
                         <Font size="27.0" />
                     </font>
                 </Label>
-                <Button fx:id="backButton" layoutX="216.0" layoutY="363.0" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="255.0" text="Voltar" />
+                <Button fx:id="backButton" layoutX="216.0" layoutY="400.0" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="255.0" text="Voltar" />
                 <DatePicker fx:id="datePicker" layoutX="44.0" layoutY="197.0" prefHeight="30.0" prefWidth="454.0" />
                 <Label layoutX="44.0" layoutY="96.0" prefHeight="30.0" prefWidth="89.0" text="Quantidade">
                     <font>
@@ -28,8 +29,14 @@
                         <Font size="15.0" />
                     </font>
                 </Label>
-                <Button fx:id="encomendar" layoutX="216.0" layoutY="288.0" mnemonicParsing="false" onAction="#fazerEncomenda" prefHeight="68.0" prefWidth="255.0" text="Encomendar" />
+                <Button fx:id="encomendar" layoutX="216.0" layoutY="318.0" mnemonicParsing="false" onAction="#fazerEncomenda" prefHeight="68.0" prefWidth="255.0" text="Encomendar" />
                 <TextField fx:id="quantidadeField" layoutX="44.0" layoutY="122.0" prefHeight="34.0" prefWidth="455.0" />
+         <ChoiceBox fx:id="UserTypeChoiceBox" layoutX="43.0" layoutY="267.0" prefHeight="30.0" prefWidth="457.0" />
+         <Label layoutX="43.0" layoutY="235.0" prefHeight="30.0" prefWidth="135.0" text="Tipo de Produto">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </Label>
         </AnchorPane>
-    </left>
+   </top>
 </BorderPane>

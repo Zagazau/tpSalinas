@@ -1,21 +1,35 @@
 package com.example.trabpraticosalinas;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+        import javafx.collections.FXCollections;
+        import javafx.collections.ObservableList;
+        import javafx.event.ActionEvent;
+        import javafx.fxml.FXML;
+        import javafx.fxml.FXMLLoader;
+        import javafx.scene.Node;
+        import javafx.scene.Parent;
+        import javafx.scene.Scene;
+        import javafx.scene.control.Button;
+        import javafx.scene.control.ChoiceBox;
+        import javafx.scene.control.DatePicker;
+        import javafx.scene.control.TextField;
+        import javafx.stage.Stage;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+        import java.time.LocalDate;
+        import java.util.ArrayList;
+        import java.util.List;
 
 public class fazerEncomendaController {
+
+    @FXML
+    private ChoiceBox<String> UserTypeChoiceBox;
+    @FXML
+    void initialize() {
+        // Adicione os itens à lista UserTypeList
+        ObservableList<String> UserTypeList = FXCollections.observableArrayList("Sal", "Flor de Sal");
+
+        // Configure a ChoiceBox com a lista de itens
+        UserTypeChoiceBox.setItems(UserTypeList);
+    }
 
     @FXML
     private Button backButton;
@@ -35,6 +49,8 @@ public class fazerEncomendaController {
             // Recupera os valores dos campos
             LocalDate dataEncomenda = datePicker.getValue();
             int quantidade = Integer.parseInt(quantidadeField.getText());
+            String tipoEncomenda = UserTypeChoiceBox.getValue();
+
 
             // Obtém o cliente logado a partir da SessionData
             Cliente cliente = SessionData.getLoggedCliente();
@@ -71,7 +87,6 @@ public class fazerEncomendaController {
         }
     }
 
-
     @FXML
     void goBack(ActionEvent event) {
         try {
@@ -85,4 +100,5 @@ public class fazerEncomendaController {
             e.printStackTrace();
         }
     }
+
 }

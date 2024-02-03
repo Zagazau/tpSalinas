@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.trabpraticosalinas.gerirEncomendasController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.trabpraticosalinas.gerirEncomendasController">
    <bottom>
         <AnchorPane prefHeight="500.0" prefWidth="705.0" style="-fx-background-color: #B0C1FF;" BorderPane.alignment="CENTER">
             <children>
@@ -21,9 +21,10 @@
                 <TableView fx:id="encomendasTable" layoutX="29.0" layoutY="100.0" prefHeight="264.0" prefWidth="634.0">
                     <columns>
                         <TableColumn fx:id="idencomenda" prefWidth="120.0" text="Id_Encomenda" />
-                        <TableColumn fx:id="DataCollum" prefWidth="127.0" text="Data" />
-                        <TableColumn fx:id="estadoEncomendaCollum" prefWidth="153.0" text="Estado da Encomenda" />
-                        <TableColumn fx:id="ValorCollum" prefWidth="233.0" text="Valor" />
+                        <TableColumn fx:id="DataCollum" prefWidth="110.0" text="Data" />
+                        <TableColumn fx:id="estadoEncomendaCollum" prefWidth="161.0" text="Estado da Encomenda" />
+                        <TableColumn fx:id="ValorCollum" prefWidth="103.0" text="Valor" />
+                  <TableColumn fx:id="tipoProduto" prefWidth="139.0" text="Tipo Produto" />
                     </columns>
                 </TableView>
                 <Button fx:id="cancelarEncomendaButton" layoutX="192.0" layoutY="380.0" mnemonicParsing="false" onAction="#cancelarEncomenda" prefHeight="44.0" prefWidth="309.0" text="Cancelar" />
