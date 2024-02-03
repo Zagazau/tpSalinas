@@ -20,9 +20,10 @@
                 <TableView fx:id="encomendasTable" layoutX="29.0" layoutY="100.0" prefHeight="264.0" prefWidth="634.0">
                     <columns>
                         <TableColumn fx:id="encomendaCollum" prefWidth="91.0" text="Encomenda " />
-                        <TableColumn fx:id="DateColumn" prefWidth="138.0" text="Data" />
-                        <TableColumn fx:id="estadoEncomendaCollum" prefWidth="199.0" text="Estado da Encomenda" />
-                        <TableColumn fx:id="ValorCollum" prefWidth="205.0" text="Valor" />
+                        <TableColumn fx:id="DateColumn" prefWidth="78.0" text="Data" />
+                        <TableColumn fx:id="estadoEncomendaCollum" prefWidth="197.0" text="Estado da Encomenda" />
+                        <TableColumn fx:id="ValorCollum" prefWidth="125.0" text="Valor" />
+               <TableColumn fx:id="Cliente" prefWidth="142.0" text="Cliente" />
                     </columns>
                 </TableView>
         </AnchorPane>

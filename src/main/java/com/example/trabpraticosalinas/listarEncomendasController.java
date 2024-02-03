@@ -24,6 +24,9 @@ public class listarEncomendasController {
     private TableColumn<?, ?> DateColumn;
 
     @FXML
+    private TableColumn<?, ?> Cliente;
+
+    @FXML
     private TableColumn<?, ?> ValorCollum;
 
     @FXML
