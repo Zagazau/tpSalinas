@@ -11,6 +11,19 @@ public class EncomendaBll {
     public EncomendaBll() {
     }
 
+    public static List<Encomenda> obterTodasEncomendas() {
+        List<Encomenda> todasEncomendas = new ArrayList<>();
+
+        // Percorra o mapa de clientes e obtenha todas as encomendas
+        Map<String, List<Encomenda>> encomendasMap = Repositorio.getRepositorio().getEncomendasMap();
+
+        for (List<Encomenda> encomendas : encomendasMap.values()) {
+            todasEncomendas.addAll(encomendas);
+        }
+
+        return todasEncomendas;
+    }
+
     public static Encomenda criarEncomenda(Encomenda encomenda, Cliente cliente) {
         if (encomenda != null && cliente != null) {
             // Adicione logs para depuração

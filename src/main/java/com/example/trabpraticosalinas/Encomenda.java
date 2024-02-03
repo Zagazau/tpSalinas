@@ -32,6 +32,9 @@ public class Encomenda implements Serializable {
         this.quantidade=quantidade;
     }
 
+    public String getNomeCliente() {
+        return cliente != null ? cliente.getNome() : "";
+    }
     public int getIdEncomenda() {
         return idEncomenda;
     }

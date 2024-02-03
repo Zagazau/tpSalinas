@@ -77,7 +77,7 @@ public class registarController {
             Parent root = loader.load();
             Scene loginScene = new Scene(root);
 
-            if ("Cliente".equals(userType) || "gestorVendas".equals(userType) || "gestorProducao".equals(userType)) {
+            if ("Cliente".equals(userType) || "GestorVendas".equals(userType) || "GestorProducao".equals(userType)) {
                 FXMLLoader menuLoader = new FXMLLoader(getClass().getResource(fxmlPath));
                 Parent menuRoot = menuLoader.load();
                 Scene menuScene = new Scene(menuRoot);
@@ -122,9 +122,9 @@ public class registarController {
                 gv1.setTelefone(teleField.getText());
                 gv1.setUsername(usernameField.getText());
                 gv1.setPassword(passwordField.getText());
-                Repositorio repositorio = new Repositorio();
 
                 gestorVendasBll.registargestorVendas((gestorVendas) gv1);
+                Repositorio repositorio = new Repositorio();
                 redirectToLogin(event, "login.fxml", "Login");
             } else if (UserTypeChoiceBox.getValue().equals("GestorProdução")) {
                 Utilizador gp1 = new gestorProducao();
@@ -136,9 +136,9 @@ public class registarController {
                 gp1.setTelefone(teleField.getText());
                 gp1.setUsername(usernameField.getText());
                 gp1.setPassword(passwordField.getText());
-                Repositorio repositorio = new Repositorio();
 
                 gestorProducaoBll.registarGestorProducao((gestorProducao) gp1);
+                Repositorio repositorio = new Repositorio();
                 redirectToLogin(event, "login.fxml", "Login");
             }
 

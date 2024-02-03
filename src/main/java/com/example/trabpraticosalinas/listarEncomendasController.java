@@ -1,70 +1,42 @@
-
 package com.example.trabpraticosalinas;
 
-        import javafx.collections.FXCollections;
-        import javafx.collections.ObservableList;
-        import javafx.event.ActionEvent;
-        import javafx.fxml.FXML;
-        import javafx.fxml.FXMLLoader;
-        import javafx.scene.Node;
-        import javafx.scene.Parent;
-        import javafx.scene.Scene;
-        import javafx.scene.control.Button;
-        import javafx.scene.control.TableColumn;
-        import javafx.scene.control.TableView;
-        import javafx.scene.control.cell.PropertyValueFactory;
-        import javafx.stage.Stage;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
-        import java.util.ArrayList;
-        import java.util.List;
+import java.util.List;
 
 public class listarEncomendasController {
-
-    @FXML
-    private TableColumn<?, ?> DateColumn;
-
-    @FXML
-    private TableColumn<?, ?> Cliente;
-
-    @FXML
-    private TableColumn<?, ?> ValorCollum;
-
-    @FXML
-    private TableView<?> encomendasTable;
 
     @FXML
     private Button backButton;
 
     @FXML
-    private TableColumn<?, ?> encomendaCollum;
+    private TableView<Encomenda> encomendasTable;
 
     @FXML
-    private TableColumn<?, ?> estadoEncomendaCollum;
+    private TableColumn<Encomenda, Integer> encomendaCollum;
 
-  /*   @FXML
-   public void initialize() {
-        Repositorio repositorio = Repositorio.getRepo();
-        repositorio.deserialize("info.repo");
+    @FXML
+    private TableColumn<Encomenda, String> DateColumn;
 
-        usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
-        fullnameColumn.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        phonenumberColumn.setCellValueFactory(new PropertyValueFactory<>("telefone"));
-        NIFColumn.setCellValueFactory(new PropertyValueFactory<>("NIF"));
-        CCNumberColumn.setCellValueFactory(new PropertyValueFactory<>("numCC"));
-        morada.setCellValueFactory(new PropertyValueFactory<>("morada"));
-        localidade.setCellValueFactory(new PropertyValueFactory<>("localidade"));
+    @FXML
+    private TableColumn<Encomenda, EncomendaEstado> estadoEncomendaCollum;
 
-        List<Cliente> clientes = new ArrayList<>();
+    @FXML
+    private TableColumn<Encomenda, Double> ValorCollum;
 
-        for (Cliente aux : repositorio.getClientesMap().values()) {
-            clientes.add(aux);
-        }
-
-        ObservableList<Cliente> clientesList = FXCollections.observableArrayList(clientes);
-        customersTable.setItems(clientesList);
-    }
-
-    */
+    @FXML
+    private TableColumn<Cliente, String> Cliente;
 
     @FXML
     void goBack(javafx.event.ActionEvent event) {
@@ -80,6 +52,25 @@ public class listarEncomendasController {
         }
     }
 
+    @FXML
+    void initialize() {
+
+        encomendaCollum.setCellValueFactory(new PropertyValueFactory<>("idEncomenda"));
+        DateColumn.setCellValueFactory(new PropertyValueFactory<>("encomendaData"));
+        estadoEncomendaCollum.setCellValueFactory(new PropertyValueFactory<>("estado"));
+        ValorCollum.setCellValueFactory(new PropertyValueFactory<>("totalValue"));
+        Cliente.setCellValueFactory(new PropertyValueFactory<>("nomeCliente"));
+
+        mostrarEncomendas();
+    }
+
+    private void mostrarEncomendas() {
+        List<Encomenda> todasEncomendas = EncomendaBll.obterTodasEncomendas();
+
+        ObservableList<Encomenda> encomendasObservable = FXCollections.observableArrayList(todasEncomendas);
+
+        encomendasTable.setItems(encomendasObservable);
+    }
+
+
 }
-
-
