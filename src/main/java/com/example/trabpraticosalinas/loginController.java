@@ -56,7 +56,7 @@ public class loginController {
 
             for (Cliente c : repo.getClientesMap().values()) {
                 if (user.equalsIgnoreCase(c.getUsername()) && password.equals(c.getPassword())) {
-
+                    sd.loggedCliente = c;
                     Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/clienteMenu.fxml"));
                     Scene regCena = new Scene(root);
                     Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

@@ -36,6 +36,12 @@ public class fazerEncomendaController {
             LocalDate dataEncomenda = datePicker.getValue();
             int quantidade = Integer.parseInt(quantidadeField.getText());
 
+            // Obtém o cliente logado a partir da SessionData
+            Cliente cliente = SessionData.getLoggedCliente();
+
+            // Adicione um log para depuração
+            System.out.println("Cliente logado: " + cliente.getNome());
+
             // Crie a lista de lotesProdutoFinal (pode ajustar conforme necessário)
             List<produtoFinal> lotesProdutoFinal = new ArrayList<>();
 
@@ -44,17 +50,16 @@ public class fazerEncomendaController {
                     // Defina os valores apropriados para idEncomenda e estado
                     1,
                     dataEncomenda,
-                    // Substitua o cliente pelo cliente correto
-                    new Cliente(),
+                    cliente,  // Use o cliente obtido da SessionData
                     lotesProdutoFinal,
                     EncomendaEstado.PROCESSADA  // ou o estado inicial desejado
             );
 
             // Chame o método para criar a encomenda
-            EncomendaBll.criarEncomenda(encomenda, encomenda.getCliente());
+            EncomendaBll.criarEncomenda(encomenda, cliente);
 
             // Redirecione para a página de gerir encomendas (ou ajuste conforme necessário)
-            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/gerirEncomendasCliente.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/clienteMenu.fxml"));
             Scene regCena = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(regCena);
@@ -64,9 +69,8 @@ public class fazerEncomendaController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
+
 
     @FXML
     void goBack(ActionEvent event) {

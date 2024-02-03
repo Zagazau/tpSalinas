@@ -3,6 +3,7 @@ package com.example.trabpraticosalinas;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.chrono.ChronoLocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,6 +20,10 @@ public class Encomenda implements Serializable {
         this.cliente = cliente;
         this.lotesProdutoFinal = lotesProdutoFinal;
         this.estado = estado;
+        if (cliente.getEncomendas() == null) {
+            cliente.setEncomendas(new ArrayList<>());
+        }
+        cliente.getEncomendas().add(this);
     }
 
     public int getIdEncomenda() {

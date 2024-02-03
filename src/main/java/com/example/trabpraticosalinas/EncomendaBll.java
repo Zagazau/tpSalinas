@@ -12,6 +12,10 @@ public class EncomendaBll {
 
     public static void criarEncomenda(Encomenda encomenda, Cliente cliente) {
         if (encomenda != null && cliente != null) {
+            // Adicione logs para depuração
+            System.out.println("Criando encomenda para cliente: " + cliente.getNome());
+            System.out.println("Detalhes da encomenda: " + encomenda.toString());
+
             encomenda.setEstado(EncomendaEstado.PROCESSADA);
             encomenda.setCliente(cliente);
             encomenda.setIdEncomenda(Repositorio.getRepositorio().getEncomendasMap().size() + 1);

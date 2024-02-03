@@ -54,10 +54,11 @@ public class pagarEncomendaController {
     private void mostrarEncomendas() {
         Repositorio repositorio = Repositorio.getRepositorio();
         repositorio.deserialize("info.repo");
+        Cliente cliente = SessionData.getLoggedCliente();
 
         // Supondo que você tenha uma referência ao ClienteAtual ou Cliente logado
         // e que este objeto tenha um método getEncomendas
-        List<Encomenda> encomendas = Cliente.getEncomendas();
+        List<Encomenda> encomendas = cliente.getEncomendas();
 
         // Crie uma ObservableList a partir da lista de encomendas
         ObservableList<Encomenda> encomendasObservable = FXCollections.observableArrayList(encomendas);
