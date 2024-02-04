@@ -47,7 +47,6 @@ public class pagarEncomendaController {
 
     @FXML
     public void initialize() {
-        // Configuração inicial da tabela
         idEncomendaCollum.setCellValueFactory(new PropertyValueFactory<>("idEncomenda"));
         DataColumn.setCellValueFactory(new PropertyValueFactory<>("encomendaData"));
         estadoEncomendaCollum.setCellValueFactory(new PropertyValueFactory<>("estado"));
@@ -56,7 +55,6 @@ public class pagarEncomendaController {
         quantidade.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
 
 
-        // Carrega as encomendas quando a cena é carregada
         mostrarEncomendas();
     }
 
@@ -65,17 +63,12 @@ public class pagarEncomendaController {
         repositorio.deserialize("info.repo");
         Cliente cliente = SessionData.getLoggedCliente();
 
-        // Supondo que você tenha uma referência ao ClienteAtual ou Cliente logado
-        // e que este objeto tenha um método getEncomendas
         List<Encomenda> encomendas = cliente.getEncomendas();
 
-        // Crie uma ObservableList a partir da lista de encomendas
         ObservableList<Encomenda> encomendasObservable = FXCollections.observableArrayList(encomendas);
 
-        // Defina os itens da tabela com a ObservableList
         encomendasTable.setItems(encomendasObservable);
 
-        // Agora, vincule as colunas aos campos corretos da classe Encomenda
         idEncomendaCollum.setCellValueFactory(new PropertyValueFactory<>("idEncomenda"));
         DataColumn.setCellValueFactory(new PropertyValueFactory<>("encomendaData"));
         estadoEncomendaCollum.setCellValueFactory(new PropertyValueFactory<>("estado"));

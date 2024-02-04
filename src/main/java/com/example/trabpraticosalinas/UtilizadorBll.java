@@ -15,16 +15,15 @@ public class UtilizadorBll {
         repositorio.lock();
 
         try {
-            // Verificar se o username já está em uso
             if (!repositorio.getClientesMap().containsKey(username) &&
                     !repositorio.getGestoresProducaoMap().containsKey(username) &&
                     !repositorio.getGestoresVendasMap().containsKey(username) &&
                     !repositorio.getAdminsMap().containsKey(username)) {
-                // Adicionar o novo utilizador
+
                 Map<String, Utilizador> utilizadores = new HashMap<>(repositorio.getClientesMap());
                 utilizadores.put(username, novoUtilizador);
 
-                // Atualizar o map no repositório
+
                 repositorio.getClientesMap().clear();
                 for (Map.Entry<String, Utilizador> entry : utilizadores.entrySet()) {
                     repositorio.getClientesMap().put(entry.getKey(), (Cliente) entry.getValue());

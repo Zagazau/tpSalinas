@@ -71,9 +71,6 @@ public class tratarEncomendasGesVenController {
     void alterarEncomenda(ActionEvent event) {
         Encomenda encomendaSelecionada = encomendasTable.getSelectionModel().getSelectedItem();
         if (encomendaSelecionada != null) {
-            // Lógica para alterar o estado da encomenda selecionada
-            // Exemplo: encomendaSelecionada.setEstado(EncomendaEstado.PROCESSADA);
-            // Atualizar a tabela após a alteração
             encomendasTable.refresh();
         }
     }

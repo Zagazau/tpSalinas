@@ -24,10 +24,10 @@ public class fazerEncomendaController {
     private ChoiceBox<String> UserTypeChoiceBox;
     @FXML
     void initialize() {
-        // Adicione os itens à lista UserTypeList
+
         ObservableList<String> UserTypeList = FXCollections.observableArrayList("Sal", "Flor de Sal");
 
-        // Configure a ChoiceBox com a lista de itens
+
         UserTypeChoiceBox.setItems(UserTypeList);
     }
 
@@ -52,9 +52,9 @@ public class fazerEncomendaController {
             Cliente cliente = SessionData.getLoggedCliente();
             List<produtoFinal> lotesProdutoFinal = new ArrayList<>();
 
-            // Crie a encomenda sem chamar o método estático criarEncomenda
+
             Encomenda encomenda = new Encomenda(
-                    0, // Use 0 como placeholder para o ID, pois o ID será atribuído pela lógica apropriada
+                    0,
                     dataEncomenda,
                     cliente,
                     lotesProdutoFinal,
@@ -64,7 +64,7 @@ public class fazerEncomendaController {
 
             );
 
-            // Use o método estático criarEncomenda da EncomendaBll para atribuir um ID adequado
+
             EncomendaBll.criarEncomenda(encomenda, cliente);
 
             Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpraticosalinas/clienteMenu.fxml"));

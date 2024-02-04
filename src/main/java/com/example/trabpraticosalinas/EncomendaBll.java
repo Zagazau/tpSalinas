@@ -14,7 +14,6 @@ public class EncomendaBll {
     public static List<Encomenda> obterTodasEncomendas() {
         List<Encomenda> todasEncomendas = new ArrayList<>();
 
-        // Percorra o mapa de clientes e obtenha todas as encomendas
         Map<String, List<Encomenda>> encomendasMap = Repositorio.getRepositorio().getEncomendasMap();
 
         for (List<Encomenda> encomendas : encomendasMap.values()) {
@@ -26,21 +25,19 @@ public class EncomendaBll {
 
     public static Encomenda criarEncomenda(Encomenda encomenda, Cliente cliente) {
         if (encomenda != null && cliente != null) {
-            // Adicione logs para depuração
+
             System.out.println("Criando encomenda para cliente: " + cliente.getNome());
             System.out.println("Detalhes da encomenda: " + encomenda.toString());
 
             encomenda.setEstado(EncomendaEstado.PROCESSADA);
             encomenda.setCliente(cliente);
 
-            // Atribui o próximo ID disponível
+
             encomenda.setIdEncomenda(proximoIdEncomenda++);
 
-            // Certifica-se de que o cliente está no repositório antes de adicionar a encomenda
+
             if (Repositorio.getRepositorio().getClientesMap().containsKey(cliente.getNIF())) {
-                // Verifica se a encomenda já existe na lista de encomendas do cliente
                 if (!Repositorio.getRepositorio().getClientesMap().get(cliente.getNIF()).getEncomendas().contains(encomenda)) {
-                    // Adiciona a encomenda à lista do cliente
                     Repositorio.getRepositorio().getClientesMap().get(cliente.getNIF()).getEncomendas().add(encomenda);
                 } else {
                     System.out.println("A encomenda já existe na lista do cliente. Não foi duplicada.");
@@ -49,7 +46,7 @@ public class EncomendaBll {
                 System.out.println("Cliente não encontrado no repositório. A encomenda não foi adicionada ao cliente.");
             }
 
-            // Adiciona a encomenda ao mapa de encomendas
+
             Repositorio.getRepositorio().getEncomendasMap()
                     .computeIfAbsent(cliente.getNIF(), k -> new ArrayList<>())
                     .add(encomenda);
@@ -57,7 +54,7 @@ public class EncomendaBll {
             System.out.println("Encomenda criada com sucesso!");
             Repositorio.getRepositorio().serialize(Repositorio.getRepositorio(), "info.repo");
 
-            // Retorna a instância da encomenda criada
+
             return encomenda;
         } else {
             System.out.println("Encomenda ou cliente inválido(s). A encomenda não foi criada.");
