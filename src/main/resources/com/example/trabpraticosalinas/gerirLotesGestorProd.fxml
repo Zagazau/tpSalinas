@@ -17,11 +17,10 @@
                 </font>
             </Label>
             <Button fx:id="backButton" layoutX="187.0" layoutY="421.0" mnemonicParsing="false" onAction="#goBack" prefHeight="31.0" prefWidth="289.0" text="Voltar" />
-            <TableView fx:id="customersTable" layoutX="14.0" layoutY="98.0" prefHeight="264.0" prefWidth="681.0">
+            <TableView fx:id="lotesTable" layoutX="14.0" layoutY="98.0" prefHeight="264.0" prefWidth="681.0">
                 <columns>
-                    <TableColumn fx:id="pesoLote" prefWidth="172.0" text="Peso" />
-                    <TableColumn fx:id="diaLote" prefWidth="249.0" text="Dia" />
-                    <TableColumn fx:id="tipoLote" prefWidth="256.0" text="Tipo" />
+                    <TableColumn fx:id="idLote" prefWidth="319.0" text="IDLote" />
+               <TableColumn fx:id="dataLote" prefWidth="361.0" text="Data" />
                 </columns>
             </TableView>
             <Button fx:id="apagarLote" layoutX="188.0" layoutY="371.0" mnemonicParsing="false" onAction="#apagarLote" prefHeight="44.0" prefWidth="288.0" text="Eliminar Lote" />

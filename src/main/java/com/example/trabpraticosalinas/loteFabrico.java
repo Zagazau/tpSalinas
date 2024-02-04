@@ -64,4 +64,5 @@ public class loteFabrico implements Serializable {
     public void setMarnotos(List<Marnoto> marnotos) {
         this.marnotos = marnotos;
     }
+
 }

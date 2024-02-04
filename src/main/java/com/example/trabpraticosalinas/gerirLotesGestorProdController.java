@@ -1,5 +1,7 @@
 package com.example.trabpraticosalinas;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +11,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class gerirLotesGestorProdController {
 
@@ -20,21 +26,37 @@ public class gerirLotesGestorProdController {
     private Button backButton;
 
     @FXML
-    private TableView<?> customersTable;
+    private TableView<produtoFinal> lotesTable;
 
     @FXML
-    private TableColumn<?, ?> diaLote;
+    private TableColumn<?, ?> dataLote;
 
     @FXML
-    private TableColumn<?, ?> pesoLote;
+    private TableColumn<?, ?> idLote;
+
 
     @FXML
-    private TableColumn<?, ?> tipoLote;
+    public void initialize() {
+        idLote.setCellValueFactory(new PropertyValueFactory<>("idProdutoFinal"));
+        dataLote.setCellValueFactory(new PropertyValueFactory<>("dataCricao"));
 
-    @FXML
-    void apagarLote(ActionEvent event) {
-
+        mostrarLotes();
     }
+
+    @FXML
+    private void mostrarLotes() {
+        try {
+            Repositorio repositorio = Repositorio.getRepo();
+            List<produtoFinal> lotes = new ArrayList<>(repositorio.getProdutosFinaisMap().values());
+
+            ObservableList<produtoFinal> observableListLotes = FXCollections.observableArrayList(lotes);
+            lotesTable.setItems(observableListLotes);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @FXML
     void goBack(javafx.event.ActionEvent event) {
@@ -50,5 +72,31 @@ public class gerirLotesGestorProdController {
         }
     }
 
+    public void apagarLote(ActionEvent actionEvent) {
+
+        produtoFinal loteSelecionado = lotesTable.getSelectionModel().getSelectedItem();
+
+        if (loteSelecionado != null) {
+            try {
+                Repositorio repositorio = Repositorio.getRepo();
+
+
+                repositorio.getProdutosFinaisMap().remove(loteSelecionado.getIdProdutoFinal());
+
+
+                Repositorio.serialize(repositorio, "info.repo");
+
+
+                mostrarLotes();
+
+                System.out.println("Lote removido com sucesso!");
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Selecione um lote para apagar.");
+        }
+    }
 }
 

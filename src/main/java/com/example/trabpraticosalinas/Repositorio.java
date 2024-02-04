@@ -24,7 +24,6 @@ public class Repositorio implements Serializable {
     private Map<String, Marnoto> marnotosMap = new HashMap<>();  // Mapa de <ID, Marnoto>
     private Map<Marnoto, List<Tanque>> marnotoTanque = new HashMap<>();  // Mapa de <ID, Marnoto>
     private Map<Tanque, List<Marnoto>> tanqueMarnoto = new HashMap<>();
-    private Map<produtoFinal, List<loteFabrico>> produtoLotesFabrico = new HashMap<>();
     private Map<Cliente, List<Encomenda>> clienteEncomendaMap = new HashMap<>();
 
     private transient ReentrantLock lock;

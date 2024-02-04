@@ -23,7 +23,6 @@
                   <Font size="27.0" />
                </font>
             </Label>
-            <Button fx:id="newAccount" layoutX="629.0" layoutY="14.0" mnemonicParsing="false" text="X" />
             <Button fx:id="registerButton" layoutX="208.0" layoutY="362.0" mnemonicParsing="false" onAction="#register" prefHeight="30.0" prefWidth="222.0" text="Criar Conta">
                <font>
                   <Font size="14.0" />
